@@ -1,0 +1,59 @@
+name: Evaluate SVNAdmin4
+on:
+  push:
+    branches: [audit-svnadmin4-20261116]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v7
+        with:
+          repository: wolcengit/SVNAdmin4
+          ref: c6973ecd36b19c313f4d9f8385c9d8e6e3ef85a2
+          path: subject
+          persist-credentials: false
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.22.12'
+          cache-dependency-path: subject/server/go.sum
+      - name: Install Subversion test dependencies
+        run: |
+          mkdir -p results
+          sudo apt-get update -qq
+          sudo env NEEDRESTART_SUSPEND=1 apt-get install -y --no-install-recommends subversion subversion-tools
+          dpkg-query -W -f='${Package}\t${Version}\t${Installed-Size}\n' 'subversion*' 'libsvn*' > results/svn-packages.tsv
+          cat /etc/os-release > results/os-release.txt
+          go version > results/go-version.txt
+          svn --version --quiet > results/svn-version.txt
+      - name: Build unmodified backend and frontend
+        run: |
+          mkdir -p subject/build
+          cd subject/server
+          CGO_ENABLED=0 go build -trimpath -o ../build/svnadmin4-unstripped .
+          CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o ../build/svnadmin4 .
+          cd ../web
+          npm ci --ignore-scripts
+          npm run build
+      - name: Compare permission evaluator with official SVN
+        continue-on-error: true
+        run: |
+          cp authz_audit_test.go subject/server/internal/svn/
+          cd subject/server
+          go test -json ./internal/svn -run TestAudit -count=1 > ../../results/authz-tests.jsonl
+      - name: Exercise localhost APIs, SVN and sample process memory
+        run: python3 runtime_audit.py subject results
+      - name: Export report evidence only
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: svnadmin4-evaluation-${{ github.sha }}
+          path: results/
+          if-no-files-found: error
+          retention-days: 7
