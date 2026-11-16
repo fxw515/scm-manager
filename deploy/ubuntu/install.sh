@@ -70,7 +70,11 @@ ARCH=$(dpkg --print-architecture)
 if [[ -e $DATA_DIR ]]; then
   [[ -d $DATA_DIR && -z $(find "$DATA_DIR" -mindepth 1 -maxdepth 1 -print -quit) ]] || die '数据目录不是空目录，请查看维护文档；不会覆盖已有数据'
 fi
-command -v python3 >/dev/null || { apt-get update; apt-get install -y python3; }
+# Scope this to our apt calls. Ubuntu's apt hook may explicitly select automatic
+# restarts, which overrides NEEDRESTART_MODE; SUSPEND skips only this hook run.
+# Do not change global needrestart settings or stop existing services.
+apt_local() { NEEDRESTART_SUSPEND=1 apt-get "$@"; }
+command -v python3 >/dev/null || { apt_local update; apt_local install -y --no-upgrade python3; }
 python3 - "$BIND_IP" "$HTTP_PORT" <<'PY'
 import socket, sys
 try:
@@ -88,8 +92,8 @@ else
     status=$(dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null || true)
     [[ $status != 'install ok installed' ]] || die "已存在 $pkg；不自动卸载或替换，请先人工检查现有容器服务"
   done
-  apt-get update
-  apt-get install -y ca-certificates curl
+  apt_local update
+  apt_local install -y --no-upgrade ca-certificates curl
   if ! grep -Rq 'download.docker.com/linux/ubuntu' /etc/apt/sources.list.d /etc/apt/sources.list 2>/dev/null; then
     [[ ! -e /etc/apt/sources.list.d/docker.sources ]] || die 'docker.sources 已存在，请人工检查'
     install -d -m 0755 /etc/apt/keyrings
@@ -104,8 +108,8 @@ Architectures: $ARCH
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
   fi
-  apt-get update
-  apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  apt_local update
+  apt_local install -y --no-upgrade docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   systemctl enable --now docker
   docker_local info >/dev/null
 fi
@@ -128,10 +132,14 @@ if ((SKIP_BUILD)); then
   docker_local image inspect "$IMAGE" >/dev/null || die '请先 docker load 中文镜像，或去掉 --skip-build'
 else
   python3 "$SCRIPT_DIR/localize.py" --check
-  docker_local build --pull -f "$SCRIPT_DIR/Dockerfile" -t "$IMAGE" "$SOURCE_DIR"
+  if ! docker_local build --pull -f "$SCRIPT_DIR/Dockerfile" -t "$IMAGE" "$SOURCE_DIR"; then
+    die '镜像构建失败。若 Docker Hub 超时，可在其他机器或 GitHub Actions 构建，docker load 后使用 --skip-build；见 deploy/ubuntu/README.md。尚未创建 SCM 容器和数据目录。'
+  fi
 fi
 LABEL=$(docker_local image inspect --format '{{index .Config.Labels "io.scm-manager.zh.version"}}' "$IMAGE")
 [[ $LABEL == 3.12.2-zh.1 ]] || die '镜像不是本版本的 SCM-Manager 中文版'
+IMAGE_PLATFORM=$(docker_local image inspect --format '{{.Os}}/{{.Architecture}}' "$IMAGE")
+[[ $IMAGE_PLATFORM == "linux/$ARCH" ]] || die "镜像平台 $IMAGE_PLATFORM 与服务器 linux/$ARCH 不匹配，请导入对应架构的镜像"
 IMAGE_ID=$(docker_local image inspect --format '{{.Id}}' "$IMAGE")
 # Recheck after the potentially long image build; never adopt new files that
 # another process may have placed in the directory in the meantime.
@@ -180,3 +188,4 @@ printf '备份：sudo bash %q %q /srv/scm-backups\n' "$SCRIPT_DIR/backup.sh" "$N
 printf '重建命令已保存：%s/run-container.sh（固定镜像 ID）\n' "$DATA_DIR"
 [[ $BIND_IP != 127.* ]] || printf '当前仅本机可访问；远程可通过 SSH 隧道或反向代理访问。\n'
 systemctl is-enabled docker >/dev/null 2>&1 || printf '提示：已有 Docker 未设置开机启动，请按现有服务策略自行管理。\n'
+printf '本脚本的 apt 操作不运行 needrestart 自动重启；如安装了软件包，请在维护窗口检查待重启服务。\n'

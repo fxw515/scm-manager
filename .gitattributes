@@ -3,3 +3,4 @@ deploy/ubuntu/*.py text eol=lf
 deploy/ubuntu/Dockerfile text eol=lf
 deploy/ubuntu/Dockerfile.dockerignore text eol=lf
 **/locales/zh/*.json text eol=lf
+.github/workflows/*.yml text eol=lf

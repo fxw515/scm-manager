@@ -6,7 +6,43 @@ Gitea 继续保留：SCM-Manager 使用独立容器、端口和数据目录。
 
 已完成资源校验、前端构建及本机中文页面检查；Docker 构建和 Ubuntu 实机部署仍需你验收，详见 [本次验证记录](VALIDATION.md)。
 
-## 首次安装
+## 无需在服务器编译：导入预构建镜像
+
+服务器连接 Docker Hub 超时时，推荐此方式。构建在 GitHub Actions 或另一台能联网的 Linux/Docker 机器完成，服务器只加载最终镜像。已有 Docker 时，无需下载 Node/Python 基础镜像或安装前端编译工具。
+
+本分支的工作流是 `.github/workflows/scm-zh-image.yml`，名称 **Build Chinese SCM image**。
+相关代码推送到 `zh-cn-ubuntu-26.04` 时自动构建 amd64 镜像，并在临时容器中检查健康状态和中文资源，然后导出镜像、对应源码及 SHA-256 校验文件。不会连接部署服务器，也不发布到 Docker Hub 或 GHCR。
+
+1. 打开 fork 的 **Actions**，如 GitHub 提示 fork 的 Actions 未启用，先启用。进入最新的 **Build Chinese SCM image** 成功运行记录。
+2. 在 **Artifacts** 下载 `scm-manager-zh-linux-amd64-提交号`，解压 ZIP，将里面的文件上传服务器。构建产物保留 7 天，请自行保存。
+3. 在服务器用 `dpkg --print-architecture` 确认架构。自动构建默认为 amd64；arm64 需要在手动运行时选择对应架构。网页的 **Run workflow** 按钮要求工作流文件位于仓库默认分支；目前默认分支是上游 `develop` 时，不要为显示按钮直接把整条中文分支合入它。已有运行可通过 **Re-run all jobs** 重试；也可在另一台相同架构的机器按下文构建。
+4. 在上传文件所在目录验证并导入（以下以 amd64 为例）：
+
+```bash
+sha256sum -c SHA256SUMS
+sudo docker image load -i scm-manager-zh-3.12.2-zh.1-linux-amd64.image.tar.gz
+```
+
+5. 已有源码目录时，在该目录执行 `git pull --ff-only`。也可以在一个空目录解压产物里的 `scm-manager.source.tar.gz`，然后进入 `scm-manager`。
+6. 将 IP 换成服务器实际内网地址，执行这一条单行命令：
+
+```bash
+sudo bash deploy/ubuntu/install.sh --skip-build --bind-ip 192.168.1.20 --http-port 8090
+```
+
+`--skip-build` 不访问镜像仓库，仅使用已导入的本地镜像，并检查版本和 CPU 架构。它仍按首次安装规则拒绝覆盖已有容器和非空数据目录。首次构建在下载基础镜像时失败的服务器，可直接采用此方式，无需重装 Docker。
+
+如果使用另一台相同架构的 Linux/Docker 机器构建，在本仓库根目录执行：
+
+```bash
+docker build --pull -f deploy/ubuntu/Dockerfile -t scm-manager-zh:3.12.2-zh.1 .
+docker image save scm-manager-zh:3.12.2-zh.1 | gzip > scm-manager-zh.image.tar.gz
+sha256sum scm-manager-zh.image.tar.gz > scm-manager-zh.image.tar.gz.sha256
+```
+
+上传生成的镜像和校验文件后，先校验，再 `sudo docker image load -i scm-manager-zh.image.tar.gz`，最后使用上述 `--skip-build` 安装。
+
+## 首次安装：在服务器构建
 
 将**整个本分支源码**放到服务器，进入仓库根目录。不要只复制 `deploy` 文件夹。
 安装需要访问 Docker Hub、Ubuntu/Docker 软件源、Yarn 包源和 GitHub。
@@ -35,11 +71,15 @@ sudo bash deploy/ubuntu/install.sh \
 - 不传 `--bind-ip` 时绑定 `127.0.0.1`，只供本机、SSH 隧道或反向代理访问。
 - 通过固定的本机 Docker socket 操作，避免受远程 Docker context 影响。
 - 不开放或更改 UFW，不配置 Nginx，不占用 Gitea 的 SSH 端口。
+- 本脚本的 apt 调用临时设置 `NEEDRESTART_SUSPEND=1`，阻止这次 apt 钩子扫描后自动重启其他服务；不修改系统的长期更新策略。软件包自身的安装脚本仍由系统执行，首次安装 Docker 会启动新 Docker 服务。安装过依赖后，请在维护窗口运行 `sudo needrestart -r l` 检查待重启项。
 
 打开 `http://服务器IP:8090/scm/`。Web 界面、Git HTTP 和 SVN HTTP 共用此端口；**不需要 3690 端口**。
 仓库地址从界面复制，不要手动套用 `svn://` 地址。
 
 Docker 发布端口可能绕过 UFW 规则，因此请绑定实际需要的内网/VPN 地址。若公网使用，请通过已有反向代理配置 HTTPS，并将本服务限制在可信网络。
+
+若出现 `load metadata`、`registry-1.docker.io`、`i/o timeout`，说明下载基础镜像时发生网络错误，中文代码尚未编译。可以检查 DNS/代理与网络出口，或改用上面的离线镜像方式；不用重装 Docker，也不必为此重启 Docker 或 Gitea。
+`aegis.service` 的失败属于另一项服务的问题，可用 `sudo systemctl status aegis.service --no-pager -l` 和 `sudo journalctl -u aegis.service -n 60 --no-pager` 单独检查；安装脚本不会禁用或卸载它。
 
 ## 初始化与中文
 
@@ -175,4 +215,4 @@ yarn build
 
 程序及本分支修改遵循上游 AGPL-3.0-only。保留原版权和许可证；分发自定义镜像时也应提供对应可构建源码。
 
-参考：[官方 Docker 部署](https://scm-manager.org/docs/latest/en/installation/docker/)、[官方版本下载](https://scm-manager.org/download/)、[Docker Ubuntu 安装](https://docs.docker.com/engine/install/ubuntu/)。
+参考：[官方 Docker 部署](https://scm-manager.org/docs/latest/en/installation/docker/)、[官方版本下载](https://scm-manager.org/download/)、[Docker Ubuntu 安装](https://docs.docker.com/engine/install/ubuntu/)、[下载 GitHub 构建产物](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts)、[needrestart 环境变量](https://manpages.ubuntu.com/manpages/noble/man1/needrestart.1.html)。

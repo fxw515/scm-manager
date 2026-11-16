@@ -1,0 +1,79 @@
+name: Build Chinese SCM image
+
+on:
+  push:
+    branches: [zh-cn-ubuntu-26.04]
+    paths:
+      - '.github/workflows/scm-zh-image.yml'
+      - 'deploy/ubuntu/**'
+      - 'scm-ui/**'
+      - 'scm-plugins/**'
+      - 'scm-webapp/src/main/resources/locales/**'
+      - 'package.json'
+      - 'yarn.lock'
+      - 'turbo.json'
+  workflow_dispatch:
+    inputs:
+      architecture:
+        description: Server architecture (dpkg --print-architecture)
+        type: choice
+        options: [amd64, arm64]
+        default: amd64
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scm-zh-image-${{ github.ref }}-${{ inputs.architecture || 'amd64' }}
+  cancel-in-progress: false
+
+jobs:
+  image:
+    runs-on: ${{ inputs.architecture == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
+    timeout-minutes: 45
+    env:
+      IMAGE: scm-manager-zh:3.12.2-zh.1
+      ARCH: ${{ inputs.architecture || 'amd64' }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Validate sources
+        run: |
+          python3 deploy/ubuntu/localize.py --check
+          python3 -m unittest discover -s deploy/ubuntu -p 'test_*.py' -v
+          bash -n deploy/ubuntu/install.sh
+          bash -n deploy/ubuntu/backup.sh
+      - name: Build image
+        run: docker build --pull -f deploy/ubuntu/Dockerfile -t "$IMAGE" .
+      - name: Verify startup and Chinese resources
+        run: |
+          docker run -d --name scm-zh-test -p 127.0.0.1:18090:8080 "$IMAGE"
+          for i in $(seq 1 120); do
+            health=$(docker inspect -f '{{.State.Health.Status}}' scm-zh-test)
+            if [ "$health" = healthy ]; then break; fi
+            sleep 2
+          done
+          test "$health" = healthy
+          python3 deploy/ubuntu/verify.py --url http://127.0.0.1:18090/scm
+      - name: Export image, source and checksum
+        run: |
+          mkdir -p dist
+          archive="scm-manager-zh-3.12.2-zh.1-linux-$ARCH.image.tar.gz"
+          docker image save "$IMAGE" | gzip -1 > "dist/$archive"
+          git archive --format=tar.gz --prefix=scm-manager/ -o dist/scm-manager.source.tar.gz HEAD
+          docker image inspect --format '{{.Id}} {{.Os}}/{{.Architecture}}' "$IMAGE" > dist/image-info.txt
+          printf 'Source commit: %s\n' "$GITHUB_SHA" >> dist/image-info.txt
+          cp deploy/ubuntu/README.md dist/DEPLOY.md
+          cd dist
+          sha256sum "$archive" scm-manager.source.tar.gz > SHA256SUMS
+      - uses: actions/upload-artifact@v7
+        with:
+          name: scm-manager-zh-linux-${{ env.ARCH }}-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
+      - name: Remove disposable test container and volumes
+        if: always()
+        run: docker rm -f -v scm-zh-test || true
