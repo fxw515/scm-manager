@@ -1,0 +1,646 @@
+{
+  "repository": {
+    "namespace": "命名空间",
+    "name": "名称",
+    "type": "仓库类型",
+    "contact": "联系人",
+    "description": "描述",
+    "creationDate": "创建时间",
+    "lastModified": "最后修改时间",
+    "archived": "已归档",
+    "exporting": "正在导出",
+    "healthCheckFailure": "存在错误"
+  },
+  "validation": {
+    "namespace-invalid": "仓库命名空间无效",
+    "namespaceSpaceWarningText": "注意：命名空间中的空格通常可用，但可能导致部分功能出现问题",
+    "name-invalid": "仓库名称无效",
+    "contact-invalid": "联系人必须是有效的邮箱地址",
+    "url-invalid": "URL 无效",
+    "branch": {
+      "nameInvalid": "分支名称无效"
+    }
+  },
+  "help": {
+    "namespaceHelpText": "仓库的命名空间，将作为仓库 URL 的一部分。",
+    "nameHelpText": "仓库名称，将作为仓库 URL 的一部分。",
+    "contactHelpText": "此仓库负责人的邮箱地址。",
+    "descriptionHelpText": "仓库的简要描述。",
+    "initializeRepository": "创建初始分支，并提交一个基本的 README.md 文件。",
+    "importUrlHelpText": "通过远程 URL 导入整个仓库，包含所有分支和标签",
+    "usernameHelpText": "导入远程仓库时可能需要用户名，留空则不使用。",
+    "passwordHelpText": "导入远程仓库时可能需要密码，留空则不使用。",
+    "skipLfsHelpText": "勾选后，导入时不下载 LFS 文件。此选项仅适用于 Git 仓库。"
+  },
+  "repositoryRoot": {
+    "settingsTitle": "常规设置",
+    "errorTitle": "错误",
+    "errorSubtitle": "未知仓库错误",
+    "menu": {
+      "navigationLabel": "仓库",
+      "informationNavLink": "信息",
+      "branchesNavLink": "分支",
+      "tagsNavLink": "标签",
+      "sourcesNavLink": "代码",
+      "settingsNavLink": "设置",
+      "generalNavLink": "常规",
+      "permissionsNavLink": "权限"
+    },
+    "tooltip": {
+      "branches": "分支",
+      "tags": "标签",
+      "commits": "提交记录",
+      "sources": "源码",
+      "settings": "设置"
+    }
+  },
+  "overview": {
+    "title": "仓库",
+    "titleWithPage": "仓库，第 {{page}} 页，共 {{total}} 页",
+    "titleWithNamespace": "{{namespace}} 中的仓库",
+    "titleWithNamespaceAndPage": "{{namespace}} 中的仓库，第 {{page}} 页，共 {{total}} 页",
+    "subtitle": "可用仓库概览",
+    "noRepositories": "未找到仓库。",
+    "invalidNamespace": "未找到仓库，所选命名空间可能不存在。",
+    "createButton": "添加仓库",
+    "filterRepositories": "筛选仓库",
+    "filterByNamespace": "按命名空间筛选",
+    "allNamespaces": "全部命名空间",
+    "clone": "克隆 / 检出",
+    "contact": "向 {{contact}} 发送邮件",
+    "ariaLabel": "仓库 {{name}}",
+    "lastModified": "最后修改时间",
+    "sendMailToContact": "给联系人发邮件"
+  },
+  "create": {
+    "title": "添加仓库",
+    "subtitle": "创建新仓库",
+    "noTypes": "没有可用的仓库类型，无法创建仓库。请至少启用一种仓库类型。"
+  },
+  "import": {
+    "subtitle": "导入已有仓库",
+    "importUrl": "远程仓库 URL",
+    "username": "用户名",
+    "password": "密码",
+    "compressed": {
+      "label": "已压缩",
+      "helpText": "仅在导出文件经过压缩时勾选。"
+    },
+    "bundle": {
+      "title": "仓库导出文件",
+      "helpText": "选择要导入的仓库导出文件。",
+      "password": {
+        "title": "密码",
+        "helpText": "输入加密导出文件的密码"
+      }
+    },
+    "fullImport": {
+      "title": "SCM-Manager 仓库归档文件",
+      "helpText": "选择要导入的归档文件。文件必须由 SCM-Manager 实例导出。",
+      "password": {
+        "title": "密码",
+        "helpText": "如果仓库归档文件已加密，需要提供正确的解密密码。"
+      }
+    },
+    "pending": {
+      "subtitle": "正在导入仓库…",
+      "infoText": "仓库正在导入，可能需要一些时间。完成后将自动跳转。离开此页面后无法返回查看导入状态，但可以在其他标签页或窗口继续使用 SCM-Manager。"
+    },
+    "importTypes": {
+      "label": "导入方式",
+      "url": {
+        "label": "通过 URL 导入",
+        "helpText": "通过指定的 URL 导入仓库。"
+      },
+      "bundle": {
+        "label": "从不含元数据的导出文件导入",
+        "helpText": "从不包含 SCM-Manager 专用元数据的导出文件中导入仓库。"
+      },
+      "fullImport": {
+        "label": "从包含元数据的 SCM-Manager 导出文件导入",
+        "helpText": "导出文件必须由 SCM-Manager 生成，并包含专用元数据。"
+      }
+    },
+    "navigationWarning": "建议留在此页面直到导入完成，离开可能中断导入。仍要离开吗？",
+    "skipLfs": "不下载 LFS 文件（仅限 Git）"
+  },
+  "branches": {
+    "overview": {
+      "title": "分支",
+      "noBranches": "未找到分支。",
+      "createButton": "创建分支",
+      "lastCommit": "最后提交",
+      "sort": {
+        "label": "排序方式",
+        "option": {
+          "default": "默认",
+          "name_asc": "名称升序 A–Z",
+          "name_desc": "名称降序 Z–A"
+        }
+      }
+    },
+    "table": {
+      "branches": {
+        "active": "活跃分支",
+        "stale": "长期未更新的分支",
+        "subtitle": "最后提交于 <date />，作者 {{author}}"
+      },
+      "lastCommit": "最后提交",
+      "lastCommitter": "作者 {{name}}"
+    },
+    "create": {
+      "title": "创建分支",
+      "source": "源分支",
+      "name": "名称",
+      "submit": "创建分支"
+    }
+  },
+  "branch": {
+    "name": "名称：",
+    "commits": "提交记录",
+    "sources": "源码",
+    "defaultTag": "默认",
+    "dangerZone": "删除分支",
+    "aheadBehind": {
+      "tooltip": "相比默认分支领先 {{ahead}} 个提交，落后 {{behind}} 个提交",
+      "label": "领先 / 落后"
+    },
+    "delete": {
+      "button": "删除",
+      "subtitle": "删除分支",
+      "description": "已删除的分支无法恢复。",
+      "confirmAlert": {
+        "title": "删除分支",
+        "message": "确定删除分支“{{branch}}”吗？",
+        "cancel": "否",
+        "submit": "是"
+      }
+    },
+    "branchWithNamespaceName": "{{namespace}}/{{name}} 中的分支 {{branch}}"
+  },
+  "compare": {
+    "title": "比较更改",
+    "linkTitle": "比较…",
+    "selector": {
+      "title": "选择分支、标签或修订版本",
+      "source": "来源",
+      "target": "目标",
+      "with": "与以下内容比较更改…",
+      "filter": "筛选选项…",
+      "typeTitle": {
+        "b": "分支",
+        "t": "标签",
+        "r": "修订版本"
+      },
+      "type": {
+        "b": "分支",
+        "t": "标签",
+        "r": "修订版本"
+      },
+      "emptyResult": "未找到符合筛选条件的结果。",
+      "tabs": {
+        "b": "分支",
+        "t": "标签",
+        "r": "修订版本"
+      },
+      "revision": {
+        "input": "输入修订版本",
+        "submit": "选择"
+      }
+    },
+    "tabs": {
+      "diff": "差异",
+      "commits": "提交记录"
+    },
+    "compareSourceAndTargetWithNamespaceName": "比较 {{namespace}}/{{name}} 中的{{sourceType}} {{source}} 与{{targetType}} {{target}}"
+  },
+  "tags": {
+    "overview": {
+      "title": "标签",
+      "noTags": "未找到标签。",
+      "created": "创建时间",
+      "sort": {
+        "label": "排序方式",
+        "option": {
+          "default": "最近创建",
+          "name_asc": "名称升序 A–Z",
+          "name_desc": "名称降序 Z–A"
+        }
+      }
+    },
+    "table": {
+      "tags": "标签"
+    },
+    "create": {
+      "form": {
+        "field": {
+          "name": {
+            "label": "名称",
+            "error": {
+              "exists": "此标签已存在于仓库中。",
+              "format": "标签名称格式不正确。"
+            }
+          }
+        }
+      },
+      "title": "创建新标签",
+      "hint": "SCM-Manager 将使用你的默认密钥自动签署此标签。",
+      "confirm": "创建标签",
+      "cancel": "取消"
+    }
+  },
+  "tag": {
+    "name": "名称",
+    "commit": "提交",
+    "sources": "源码",
+    "dangerZone": "删除标签",
+    "delete": {
+      "button": "删除标签",
+      "subtitle": "删除标签",
+      "description": "已删除的标签无法恢复。",
+      "confirmAlert": {
+        "title": "删除标签",
+        "message": "确定删除标签“{{tag}}”吗？",
+        "cancel": "否",
+        "submit": "是"
+      }
+    },
+    "tagWithNamespaceName": "{{namespace}}/{{name}} 中的标签 {{tag}}"
+  },
+  "code": {
+    "sources": "源码",
+    "commits": "提交记录",
+    "branchSelector": "分支",
+    "noBranches": "此仓库中未找到源码。"
+  },
+  "changesets": {
+    "commitsWithNamespaceName": "{{namespace}}/{{name}} 中的提交记录",
+    "commitsWithPageAndNamespaceName": "{{namespace}}/{{name}} 中的提交记录，第 {{page}} 页，共 {{total}} 页",
+    "commitsWithPageRevisionAndNamespaceName": "{{namespace}}/{{name}} 中 {{revision}} 的提交记录，第 {{page}} 页，共 {{total}} 页",
+    "commitsWithRevisionAndNamespaceName": "{{namespace}}/{{name}} 中 {{revision}} 的提交记录",
+    "idWithNamespaceName": "{{namespace}}/{{name}} 中的 {{id}}",
+    "errorTitle": "错误",
+    "errorSubtitle": "无法获取提交记录",
+    "noChangesets": "此分支中未找到提交记录，相关提交可能已被移除。",
+    "branchSelectorLabel": "分支",
+    "collapseDiffs": "折叠",
+    "ignoreWhitespace": "忽略空白字符更改",
+    "checkBoxHeadingWhitespaces": "空白字符设置",
+    "checkBoxHeadingOtherSettings": "其他设置",
+    "checkBoxCollapseOption": "折叠所有差异",
+    "checkBoxHideWhitespaceChanges": "隐藏仅包含空白字符更改的差异",
+    "activateWhitespace": "显示空白字符更改",
+    "moreDiffsAvailable": "还有更多差异",
+    "loadMore": "加载更多",
+    "showModifiedFiles": "新增 <tag>{{newFiles}}</tag> 个，修改 <tag>{{modified}}</tag> 个，删除 <tag>{{deleted}}</tag> 个",
+    "showRenamedFiles": "，重命名 <tag>{{renamed}}</tag> 个",
+    "showCopiedFiles": "，复制 <tag>{{copied}}</tag> 个",
+    "showFiles": "文件",
+    "diffTree": {
+      "title": "差异文件树",
+      "layout": "切换布局：",
+      "show": "同时显示",
+      "full": "隐藏差异",
+      "hide": "隐藏文件树"
+    }
+  },
+  "changeset": {
+    "label": "提交",
+    "description": "描述",
+    "summary": "提交 <0/> 创建于 <1/>",
+    "shortSummary": "创建于 <0/> <1/>",
+    "tags": "标签",
+    "keyOwner": "密钥所有者",
+    "keyId": "密钥 ID",
+    "keyContacts": "联系方式",
+    "noOwner": "未知",
+    "signatureStatus": "状态",
+    "signatureVerified": "已验证",
+    "signatureNotVerified": "未验证",
+    "signatureInvalid": "无效",
+    "signatures": "签名",
+    "shortlink": {
+      "title": "{{namespace}}/{{name}} 的提交 {{id}}"
+    },
+    "diffNotSupported": "此仓库类型不支持比较提交差异",
+    "buttons": {
+      "details": "详情",
+      "sources": "源码"
+    },
+    "parents": {
+      "label": "父提交",
+      "label_other": "父提交"
+    },
+    "contributors": {
+      "mailto": "发送邮件给",
+      "showList": "显示贡献者列表",
+      "hideList": "隐藏贡献者列表",
+      "list": "贡献者列表",
+      "authoredBy": "作者",
+      "committedBy": "提交者",
+      "coAuthoredBy": "共同作者",
+      "more": "另有 {{count}} 位",
+      "count": "{{count}} 位贡献者",
+      "count_other": "{{count}} 位贡献者"
+    },
+    "tag": {
+      "create": "创建标签"
+    },
+    "revert": {
+      "button": "还原",
+      "modal": {
+        "title": "还原提交",
+        "description": "即将在以下分支上还原提交 {{commit}}：",
+        "branch": "分支",
+        "commitMessage": "提交说明",
+        "commitMessagePlaceholder": "还原“{{description}}”\n\n此操作还原提交 {{id}}。",
+        "submit": "还原",
+        "cancel": "取消"
+      }
+    },
+    "containedInTags": {
+      "containedInTag_one": "包含在 {{count}} 个标签中",
+      "containedInTag_other": "包含在 {{count}} 个标签中",
+      "allTags": "包含此提交的所有标签",
+      "showAllTags": "显示包含此提交的所有标签",
+      "hideAllTags": "隐藏包含此提交的所有标签"
+    }
+  },
+  "commit": {
+    "commitAuthor": {
+      "author": "作者",
+      "noMail": "当前用户没有邮箱地址，将使用下方自动生成的地址。"
+    }
+  },
+  "repositoryForm": {
+    "subtitle": "编辑仓库",
+    "submitCreate": "保存",
+    "submitImport": "导入",
+    "initializeRepository": "初始化仓库",
+    "dangerZone": "重命名、归档和删除",
+    "createButton": "创建仓库",
+    "importButton": "导入仓库",
+    "healthCheckWarning": {
+      "title": "此仓库最近一次健康检查发现错误，点击查看详情。",
+      "subtitle": "如需重新检查，请点击下方“健康检查”中的按钮。"
+    }
+  },
+  "export": {
+    "subtitle": "仓库导出",
+    "notification": "注意：导出期间无法修改仓库。创建新的导出文件会删除旧文件。生成的导出文件将在 10 天后自动删除。",
+    "compressed": {
+      "label": "压缩",
+      "helpText": "压缩导出文件以减小下载体积。"
+    },
+    "fullExport": {
+      "label": "包含元数据",
+      "helpText": "除仓库数据外，还导出仓库及 SCM 实例的元数据。请确保已安装插件为最新版本。导入其他 SCM-Manager 实例时，保存的密码将无法使用。"
+    },
+    "encrypt": {
+      "label": "加密",
+      "helpText": "使用指定的密码加密导出文件。"
+    },
+    "password": {
+      "label": "密码",
+      "helpText": "输入用于加密文件的密码。"
+    },
+    "createExportButton": "创建新的导出文件",
+    "downloadExportButton": "下载导出文件",
+    "exportInfo": {
+      "infoBoxTitle": "已保存的仓库导出信息",
+      "exporter": "创建者：{{username}}",
+      "created": "创建于",
+      "repository": "此导出文件包含：\n- 仓库",
+      "repositoryArchive": "此导出文件包含：\n- 仓库\n- 仓库元数据（例如插件数据）\n- 导出时 SCM-Manager 的环境描述\n- 仓库的其他信息",
+      "encrypted": "已加密：保存的导出文件已加密。",
+      "interrupted": "已中断：创建导出文件的操作被中止，可能由服务器重启导致。"
+    }
+  },
+  "sources": {
+    "fileTree": {
+      "name": "名称",
+      "length": "长度",
+      "commitDate": "提交时间",
+      "description": "描述",
+      "notYetComputed": "尚未计算，稍后将更新",
+      "computationAborted": "计算耗时过长，已中止",
+      "subRepository": "子仓库",
+      "folder": "文件夹",
+      "file": "文件"
+    },
+    "content": {
+      "actionMenuTrigger": "操作",
+      "historyButton": "历史",
+      "sourcesButton": "源码",
+      "annotateButton": "逐行追溯",
+      "downloadButton": "下载",
+      "toggleButton": {
+        "showMarkdown": "预览",
+        "showSources": "来源"
+      },
+      "showMore": "显示更多信息",
+      "hideMore": "隐藏更多信息",
+      "path": "路径",
+      "branch": "分支",
+      "commitDate": "提交时间",
+      "description": "描述",
+      "size": "大小",
+      "copyPermalink": "复制永久链接",
+      "loading": "正在加载…"
+    },
+    "noSources": "此分支中未找到源码。",
+    "extension": {
+      "notBound": "未绑定扩展。"
+    },
+    "loadMore": "加载",
+    "moreFilesAvailable": "当前仅显示前 {{count}} 个文件，还有更多文件。",
+    "pathWithRevisionAndNamespaceName": "{{namespace}}/{{name}} 中 {{revision}} 的 {{path}}",
+    "sourcesWithRevisionAndNamespaceName": "{{namespace}}/{{name}} 中 {{revision}} 的源码"
+  },
+  "permission": {
+    "title": "权限",
+    "namespace-help": "此处设置的权限适用于该命名空间及其中的所有仓库。",
+    "noPermissions": "未找到权限。",
+    "user": "用户",
+    "group": "用户组",
+    "error-title": "错误",
+    "error-subtitle": "未知权限错误",
+    "name": "用户或用户组",
+    "role": "角色",
+    "custom": "自定义",
+    "permissions": "权限",
+    "group-permission": "用户组权限",
+    "user-permission": "用户权限",
+    "group-select": "选择用户组",
+    "user-select": "选择用户",
+    "edit-permission": {
+      "delete-button": "删除",
+      "save-button": "保存更改"
+    },
+    "advanced-button": {
+      "label": "高级"
+    },
+    "delete-permission-button": {
+      "label": "删除",
+      "confirm-alert": {
+        "title": "删除权限",
+        "message": "确定删除此权限吗？",
+        "submit": "是",
+        "cancel": "否"
+      }
+    },
+    "add-permission": {
+      "add-permission-heading": "添加权限",
+      "submit-button": "提交",
+      "name-input-invalid": "权限对象不能为空。如果已填写，请检查名称是否无效或已经存在。"
+    },
+    "help": {
+      "groupPermissionHelpText": "勾选表示用户组权限，不勾选表示用户权限。",
+      "nameHelpText": "管理指定用户或用户组的权限。",
+      "roleHelpText": "READ 表示只读；WRITE 表示读写；OWNER 表示读写以及管理属性和权限。如果未选择角色，可点击“高级”查看详细权限。",
+      "permissionsHelpText": "自定义权限集合，不受预定义角色限制。"
+    },
+    "advanced": {
+      "dialog": {
+        "title": "高级权限",
+        "submit": "提交",
+        "abort": "中止"
+      }
+    }
+  },
+  "deleteRepo": {
+    "button": "删除仓库",
+    "subtitle": "删除仓库",
+    "description": "已删除的仓库无法恢复。",
+    "confirmAlert": {
+      "title": "删除仓库",
+      "message": "确定删除此仓库吗？",
+      "confirmationText": "输入“{{confirmationText}}”以确认删除仓库。",
+      "inputNotMatching": "输入内容不匹配。",
+      "submit": "是",
+      "cancel": "否"
+    }
+  },
+  "renameRepo": {
+    "button": "重命名仓库",
+    "subtitle": "重命名此仓库",
+    "description1": "重命名后，只能通过新名称访问仓库。",
+    "description2": "如果修改命名空间，需要重新设置命名空间权限。",
+    "modal": {
+      "title": "重命名仓库",
+      "label": {
+        "repoName": "仓库名称",
+        "repoNamespace": "仓库命名空间"
+      },
+      "button": {
+        "rename": "重命名",
+        "cancel": "取消"
+      }
+    }
+  },
+  "archiveRepo": {
+    "button": "归档仓库",
+    "subtitle": "归档此仓库",
+    "description": "归档后的仓库无法继续修改。",
+    "confirmAlert": {
+      "title": "归档仓库",
+      "message": "确定归档此仓库吗？",
+      "submit": "是",
+      "cancel": "否"
+    }
+  },
+  "unarchiveRepo": {
+    "button": "取消归档",
+    "subtitle": "取消归档",
+    "description": "取消归档后，此仓库可以再次修改。",
+    "confirmAlert": {
+      "title": "取消归档",
+      "message": "确定取消归档吗？",
+      "submit": "是",
+      "cancel": "否"
+    }
+  },
+  "archive": {
+    "tooltip": "只读：已归档的仓库无法修改。"
+  },
+  "exporting": {
+    "tooltip": "只读：仓库正在导出。"
+  },
+  "healthCheckFailure": {
+    "tooltip": "此仓库健康检查未通过，点击查看详情。",
+    "title": "健康检查错误",
+    "close": "关闭"
+  },
+  "runHealthCheck": {
+    "button": "运行健康检查",
+    "subtitle": "健康检查",
+    "descriptionNotRunning": "对此仓库运行健康检查，可能需要一些时间。",
+    "descriptionRunning": "此仓库的健康检查正在运行，无法同时再次启动。"
+  },
+  "reindex": {
+    "button": "重建索引",
+    "subtitle": "重建搜索索引",
+    "description": "删除此仓库现有的全部搜索索引，并从头重建，可能需要一些时间。",
+    "started": "已开始重建索引。这是异步操作，可能需要一些时间。"
+  },
+  "diff": {
+    "changes": {
+      "add": "已添加",
+      "delete": "已删除",
+      "modify": "已修改",
+      "rename": "已重命名",
+      "copy": "已复制"
+    },
+    "jumpToSource": "跳转到源文件",
+    "jumpToTarget": "跳转到文件的上一版本",
+    "sideBySide": "切换为并排视图",
+    "combined": "切换为合并视图",
+    "noDiffFound": "所选分支之间没有差异。",
+    "expandByLines_one": "再加载 {{count}} 行",
+    "expandByLines_other": "再加载 {{count}} 行",
+    "expandComplete_one": "加载剩余 {{count}} 行",
+    "expandComplete_other": "加载剩余全部 {{count}} 行",
+    "expandLastBottomByLines": "再加载最多 {{count}} 行",
+    "expandLastBottomComplete": "加载所有剩余行",
+    "expanding": "正在加载行…",
+    "expansionFailed": "加载更多行时发生错误",
+    "fullscreen": {
+      "open": "全屏打开",
+      "close": "关闭"
+    },
+    "renamedTo": "重命名为",
+    "showContent": "显示差异内容",
+    "hideContent": "隐藏差异内容",
+    "showWhitespace": "显示空格和制表符",
+    "hideWhitespace": "隐藏空格和制表符"
+  },
+  "fileUpload": {
+    "clickHere": "点击此处选择文件",
+    "dragAndDrop": "将文件拖放到此处"
+  },
+  "fileSearch": {
+    "button": {
+      "title": "搜索文件路径"
+    },
+    "file": "文件",
+    "home": "返回源码根目录",
+    "input": {
+      "placeholder": "搜索文件路径",
+      "help": "输入至少两个字符开始搜索。"
+    },
+    "results_one": "找到 {{count}} 条结果：",
+    "results_other": "找到 {{count}} 条结果：",
+    "notifications": {
+      "emptyResult": "未找到与 <0>{{query}}</0> 匹配的结果。"
+    },
+    "searchWithRevisionAndNamespaceName": "搜索 {{namespace}}/{{name}} 中的 {{revision}}"
+  },
+  "shortcuts": {
+    "info": "切换到仓库信息",
+    "branches": "切换到分支",
+    "fileSearch": "切换到文件搜索",
+    "tags": "切换到标签",
+    "code": "切换到代码",
+    "settings": "切换到设置"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "scm-svn-plugin": {
+    "information": {
+      "checkout": "检出仓库"
+    },
+    "config": {
+      "link": "Subversion",
+      "title": "Subversion 配置",
+      "compatibility": {
+        "label": "Subversion 仓库版本兼容性"
+      },
+      "compatibility-values": {
+        "none": "不启用旧版本兼容",
+        "pre14": "兼容 1.4 之前的版本",
+        "pre15": "兼容 1.5 之前的版本",
+        "pre16": "兼容 1.6 之前的版本",
+        "pre17": "兼容 1.7 之前的版本",
+        "with17": "兼容 1.7"
+      },
+      "enabledGZip": {
+        "label": "对 Subversion 响应启用 GZip 压缩"
+      },
+      "disabled": {
+        "label": "禁用 SVN 插件。仅在没有 Subversion 仓库时允许禁用。"
+      }
+    }
+  },
+  "permissions": {
+    "configuration": {
+      "read,write": {
+        "svn": {
+          "displayName": "修改 Subversion 配置",
+          "description": "允许修改 Subversion 配置"
+        }
+      }
+    },
+    "repository": {
+      "svn": {
+        "*": {
+          "displayName": "修改仓库的 Subversion 配置",
+          "description": "允许修改仓库级 Subversion 配置"
+        }
+      }
+    }
+  },
+  "verbs": {
+    "repository": {
+      "svn": {
+        "displayName": "配置 Subversion",
+        "description": "允许修改此仓库的 Subversion 配置"
+      }
+    }
+  }
+}

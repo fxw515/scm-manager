@@ -1,0 +1,123 @@
+{
+  "admin": {
+    "menu": {
+      "navigationLabel": "系统管理",
+      "informationNavLink": "信息",
+      "settingsNavLink": "设置",
+      "generalNavLink": "常规"
+    },
+    "info": {
+      "title": "系统管理",
+      "currentAppVersion": "当前应用版本",
+      "newAppVersion": "SCM-Manager 有新版本可用",
+      "newRelease": {
+        "title": "SCM-Manager 有新版本可用",
+        "description": "从官方网站下载最新的 SCM-Manager {{version}} 版本。",
+        "downloadButton": "获取最新版本"
+      },
+      "communityTitle": "社区支持",
+      "communityInfo": "如需咨询 SCM-Manager、反馈问题或提出功能建议，请通过官方渠道联系支持团队。",
+      "communityButton": "联系团队",
+      "enterpriseTitle": "企业支持",
+      "enterpriseInfo": "需要将 SCM-Manager 接入现有流程、定制功能，或签订服务级别协议（SLA）？",
+      "enterprisePartner": "请联系开发合作伙伴 Cloudogu，讨论具体需求并获取报价。",
+      "enterpriseLink": "https://platform.cloudogu.com/en/support/",
+      "enterpriseButton": "申请企业支持"
+    }
+  },
+  "plugins": {
+    "title": "插件",
+    "installedSubtitle": "已安装插件",
+    "availableSubtitle": "可用插件",
+    "menu": {
+      "pluginsNavLink": "插件",
+      "installedNavLink": "已安装",
+      "availableNavLink": "可用"
+    },
+    "markedAsPending": "已加入待处理列表",
+    "showPending": "查看更改",
+    "executePending": "等待重启",
+    "outdatedPlugins": "更新 {{count}} 个插件",
+    "outdatedPlugins_other": "更新 {{count}} 个插件",
+    "updateAll": "更新全部插件",
+    "cancelPending": "放弃更改",
+    "noPlugins": "未找到插件。",
+    "pluginCenterStatus": {
+      "ERROR": "插件中心不可用，无法安装或更新插件。",
+      "DEACTIVATED": "配置中已禁用插件中心，无法安装或更新插件。"
+    },
+    "modal": {
+      "title": {
+        "install": "安装 {{name}} 插件",
+        "update": "更新 {{name}} 插件",
+        "uninstall": "卸载 {{name}} 插件"
+      },
+      "restart": "重启以应用插件更改",
+      "install": "安装",
+      "update": "更新",
+      "uninstall": "卸载",
+      "installQueue": "将安装：",
+      "updateQueue": "将更新：",
+      "uninstallQueue": "将卸载：",
+      "installAndRestart": "安装并重启",
+      "updateAndRestart": "更新并重启",
+      "uninstallAndRestart": "卸载并重启",
+      "executeAndRestart": "执行并重启",
+      "updateAll": "更新全部插件",
+      "abort": "中止",
+      "close": "关闭",
+      "author": "作者",
+      "version": "版本",
+      "currentVersion": "已安装版本",
+      "newVersion": "新版本",
+      "dependencyNotification": "如果下列依赖尚未安装或不是最新版本，将一并安装或更新。",
+      "optionalDependencyNotification": "如果已安装下列可选依赖，将一并更新。",
+      "dependencies": "依赖",
+      "installedNotification": "插件安装成功，请刷新页面查看界面变化。",
+      "updatedNotification": "插件更新成功，请刷新页面查看界面变化。",
+      "uninstalledNotification": "插件卸载成功，请刷新页面查看界面变化。",
+      "executedChangesNotification": "插件更改已完成，请刷新页面查看界面变化。",
+      "reload": "立即刷新",
+      "restartNotification": "请确保没有其他人正在使用 SCM-Manager，再进行重启。",
+      "executePending": "将执行下列插件更改，然后重启 SCM-Manager。",
+      "cancelPending": "将取消下列插件更改。",
+      "updateAllInfo": "将执行下列插件更改，重启 SCM-Manager 后生效。",
+      "manualRestartRequired": "完成插件更改后，必须重启 SCM-Manager。",
+      "showPending": "需要重启 SCM-Manager 才能执行下列插件更改。"
+    }
+  },
+  "repositoryRole": {
+    "navLink": "权限角色",
+    "title": "权限角色",
+    "titleWithPage": "权限角色，第 {{page}} 页，共 {{total}} 页",
+    "errorTitle": "错误",
+    "errorSubtitle": "未知权限角色错误",
+    "detailsTitle": "权限角色",
+    "createSubtitle": "创建权限角色",
+    "editSubtitle": "编辑权限角色",
+    "overview": {
+      "subtitle": "全部权限角色",
+      "noPermissionRoles": "未找到权限角色。",
+      "createButton": "创建权限角色"
+    },
+    "editButton": "编辑",
+    "name": "名称",
+    "type": "类型",
+    "verbs": "权限",
+    "system": "系统",
+    "form": {
+      "name": "名称",
+      "permissions": "权限",
+      "submit": "保存"
+    },
+    "delete": {
+      "button": "删除权限角色",
+      "confirmAlert": {
+        "title": "删除权限角色",
+        "message": "确定删除此权限角色吗？所有用户都将失去通过此角色获得的权限。",
+        "submit": "是",
+        "cancel": "否"
+      }
+    }
+  }
+}

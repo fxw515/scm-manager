@@ -1,0 +1,83 @@
+{
+  "scm-git-plugin": {
+    "information": {
+      "clone": "克隆仓库",
+      "create": "创建新仓库",
+      "replace": "为已有仓库添加远程 origin",
+      "fetch": "获取远程更改",
+      "checkout": "切换分支",
+      "checkoutTag": "从标签检出为新分支",
+      "merge": {
+        "heading": "将源分支合并到目标分支",
+        "checkout": "1. 确保工作区干净，然后切换到目标分支",
+        "update": "2. 更新工作区",
+        "merge": "3. 合并源分支",
+        "resolve_a": "4a. 解决合并冲突，将修改后的文件逐个加入暂存区；或",
+        "resolve_b": "4b. 解决合并冲突，将所有文件一起加入暂存区",
+        "commit": "5. 提交",
+        "push": "6. 推送合并结果"
+      }
+    },
+    "config": {
+      "link": "Git",
+      "title": "Git 配置",
+      "gcExpression": {
+        "label": "垃圾回收 Cron 表达式",
+        "descriptionText": "使用 Quartz Cron 表达式（秒 分 时 日 月 星期）定期执行 git gc。"
+      },
+      "nonFastForwardDisallowed": {
+        "label": "禁止非快进推送",
+        "descriptionText": "拒绝 --force 等非快进推送。"
+      },
+      "defaultBranch": {
+        "label": "新初始化仓库的默认分支"
+      },
+      "lfsWriteAuthorizationExpirationInMinutes": {
+        "label": "LFS 授权有效期",
+        "descriptionText": "LFS 上传请求的授权令牌有效期，单位为分钟。如果使用会缓冲 HTTP 请求的反向代理（如 Nginx），应设置为足以完成一次 LFS 上传的时长。"
+      },
+      "disabled": {
+        "label": "禁用 Git 插件。仅在没有 Git 仓库时允许禁用。"
+      },
+      "submit": "提交"
+    },
+    "repoConfig": {
+      "title": "Git 设置",
+      "defaultBranch": "默认分支",
+      "nonFastForwardDisallowed": "禁止非快进推送",
+      "nonFastForwardDisallowedHelpText": "拒绝 --force 等非快进推送。",
+      "submit": "提交",
+      "error": {
+        "title": "错误",
+        "subtitle": "发生错误"
+      },
+      "success": "配置已保存！"
+    }
+  },
+  "permissions": {
+    "configuration": {
+      "read,write": {
+        "git": {
+          "displayName": "修改 Git 配置",
+          "description": "允许修改 Git 配置"
+        }
+      }
+    },
+    "repository": {
+      "git": {
+        "*": {
+          "displayName": "修改仓库的 Git 配置",
+          "description": "允许修改仓库级 Git 配置"
+        }
+      }
+    }
+  },
+  "verbs": {
+    "repository": {
+      "git": {
+        "displayName": "配置 Git",
+        "description": "允许修改此仓库的 Git 配置"
+      }
+    }
+  }
+}

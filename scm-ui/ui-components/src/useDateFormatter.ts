@@ -15,7 +15,7 @@
  */
 
 import { useTranslation } from "react-i18next";
-import { enUS, de, es } from "date-fns/locale";
+import { enUS, de, es, zhCN } from "date-fns/locale";
 import { formatDistance, format, Locale, parseISO } from "date-fns";
 
 type LocaleMap = {
@@ -27,6 +27,9 @@ export const supportedLocales: LocaleMap = {
   en: enUS,
   de,
   es,
+  zh: zhCN,
+  "zh-CN": zhCN,
+  "zh-Hans": zhCN,
 };
 
 type Options = {

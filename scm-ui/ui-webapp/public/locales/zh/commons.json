@@ -1,0 +1,372 @@
+{
+  "dialog": {
+    "closeButton": {
+      "ariaLabel": "关闭对话框"
+    }
+  },
+  "popover": {
+    "closeButton": {
+      "ariaLabel": "关闭弹出面板"
+    }
+  },
+  "menu": {
+    "defaultTriggerLabel": "菜单"
+  },
+  "form": {
+    "submit": "提交",
+    "reset": "清空",
+    "discardChanges": "放弃更改",
+    "submit-success-notification": "配置已保存！",
+    "combobox": {
+      "arbitraryDisplayValue": "使用“{{query}}”"
+    },
+    "chipList": {
+      "delete": "删除“{{item}}”",
+      "input": {
+        "description": "按回车键将值添加到列表。"
+      }
+    },
+    "table": {
+      "headers": {
+        "action": {
+          "label": "操作"
+        }
+      },
+      "delete": {
+        "label": "删除"
+      },
+      "empty": {
+        "label": "暂无条目"
+      }
+    },
+    "list": {
+      "add": {
+        "label": "添加{{entity}}"
+      },
+      "delete": {
+        "label": "删除{{entity}}"
+      },
+      "title": {
+        "label": "添加新的{{entity}}"
+      }
+    },
+    "searchBox": {
+      "noOptions": "没有结果"
+    }
+  },
+  "login": {
+    "title": "登录",
+    "subtitle": "请登录后继续",
+    "logo-alt": "SCM-Manager",
+    "username-placeholder": "用户名",
+    "password-placeholder": "密码",
+    "submit": "登录",
+    "plugin": "插件",
+    "feature": "功能",
+    "tip": "提示",
+    "loading": "正在加载…",
+    "error": "错误"
+  },
+  "logout": {
+    "title": "退出登录",
+    "error": {
+      "title": "退出登录失败",
+      "subtitle": "退出登录时发生错误"
+    }
+  },
+  "app": {
+    "error": {
+      "title": "错误",
+      "subtitle": "发生未知错误"
+    }
+  },
+  "breadcrumb": {
+    "home": "首页",
+    "copyPermalink": "复制永久链接",
+    "currentPath": "当前路径",
+    "loading": "正在加载…"
+  },
+  "errorNotification": {
+    "prefix": "错误",
+    "loginLink": "点击此处重新登录。",
+    "timeout": "登录已过期",
+    "wrongLoginCredentials": "用户名或密码错误",
+    "forbidden": "你没有权限查看此对象"
+  },
+  "errorBoundary": {
+    "redirect": {
+      "title": "正在跳转",
+      "subtitle": "即将跳转到登录页面"
+    }
+  },
+  "markdownErrorNotification": {
+    "title": "无法解析 Markdown 内容",
+    "description": "内容不是有效的 Markdown。如果使用 XML，请将其放入代码块，例如：",
+    "spec": "请参阅格式规范"
+  },
+  "loading": {
+    "alt": "正在加载…"
+  },
+  "logo": {
+    "alt": "SCM-Manager 标志：由几何图形组成的抽象蝴蝶"
+  },
+  "primary-navigation": {
+    "repositories": "仓库",
+    "users": "用户",
+    "logout": "退出登录",
+    "login": "登录",
+    "groups": "用户组",
+    "admin": "系统管理",
+    "navbarBurger": "打开导航"
+  },
+  "secondaryNavigation": {
+    "showContent": "展开导航",
+    "hideContent": "收起导航"
+  },
+  "filterEntries": "筛选条目",
+  "autocomplete": {
+    "group": "用户组",
+    "user": "用户",
+    "noGroupOptions": "没有匹配的用户组",
+    "groupPlaceholder": "输入用户组",
+    "noUserOptions": "没有匹配的用户",
+    "userPlaceholder": "输入用户",
+    "loading": "正在加载…"
+  },
+  "paginator": {
+    "next": "下一页",
+    "previous": "上一页"
+  },
+  "profile": {
+    "subtitle": "信息",
+    "navigationLabel": "个人资料",
+    "informationNavLink": "信息",
+    "changePasswordNavLink": "修改密码",
+    "settingsNavLink": "设置",
+    "publicKeysNavLink": "公钥",
+    "apiKeysNavLink": "API 密钥",
+    "username": "用户名",
+    "displayName": "显示名称",
+    "mail": "电子邮箱",
+    "groups": "用户组",
+    "information": "信息",
+    "change-password": "修改密码",
+    "error-title": "错误",
+    "error-subtitle": "无法显示个人资料",
+    "error": "错误",
+    "error-message": "未定义“me”",
+    "theme": {
+      "navLink": "主题",
+      "subtitle": "选择主题",
+      "submit": "启用",
+      "light": {
+        "displayName": "浅色",
+        "description": "浅色模式是 SCM-Manager 的默认主题"
+      },
+      "highcontrast": {
+        "displayName": "高对比度",
+        "description": "使用具有高色彩对比度的深色主题"
+      },
+      "dark": {
+        "displayName": "深色",
+        "description": "使用色彩更柔和的深色主题"
+      },
+      "systemdefault": {
+        "displayName": "跟随系统",
+        "description": "使用系统的默认设置"
+      }
+    },
+    "accessibility": {
+      "navLink": "无障碍",
+      "subtitle": "无障碍",
+      "deactivateShortcuts": {
+        "label": "禁用快捷键",
+        "helpText": "禁用所有可能影响无障碍操作的自定义快捷键。"
+      },
+      "submit": "提交"
+    }
+  },
+  "password": {
+    "subtitle": "修改密码",
+    "label": "密码",
+    "newPassword": "新密码",
+    "currentPassword": "当前密码",
+    "currentPasswordHelpText": "目前使用的密码",
+    "confirmPassword": "确认密码",
+    "passwordInvalid": "密码长度必须在 6 到 1024 个字符之间",
+    "passwordConfirmFailed": "两次输入的密码必须一致",
+    "submit": "提交",
+    "changedSuccessfully": "密码修改成功"
+  },
+  "footer": {
+    "user": {
+      "profile": "个人资料",
+      "theme": "主题",
+      "accessibility": "无障碍"
+    },
+    "information": {
+      "title": "信息"
+    },
+    "support": {
+      "title": "支持",
+      "community": "社区",
+      "enterprise": "企业",
+      "bugReport": "问题反馈",
+      "featureRequest": "功能建议"
+    }
+  },
+  "commaSeparatedList": {
+    "lastDivider": "和"
+  },
+  "fileUpload": {
+    "label": "选择文件"
+  },
+  "fileInput": {
+    "label": "选择文件",
+    "noFileChosen": "未选择文件"
+  },
+  "importLog": {
+    "title": "导入日志"
+  },
+  "syntaxHighlighting": {
+    "copyButton": "复制到剪贴板"
+  },
+  "notifications": {
+    "toastTitle": "通知",
+    "xMore": "另有 {{ count }} 条通知",
+    "xMore_other": "另有 {{ count }} 条通知",
+    "loading": "正在加载…",
+    "bellTitle": "通知",
+    "empty": "暂无通知",
+    "dismiss": "忽略",
+    "dismissAll": "全部忽略",
+    "updateSuccessful": "更新成功。"
+  },
+  "alerts": {
+    "shieldTitle": "警报"
+  },
+  "cardColumnGroup": {
+    "showContent": "显示内容",
+    "hideContent": "隐藏内容"
+  },
+  "duration": {
+    "ms": "{{count}} 毫秒",
+    "ms_other": "{{count}} 毫秒",
+    "s": "{{count}} 秒",
+    "s_other": "{{count}} 秒",
+    "m": "{{count}} 分钟",
+    "m_other": "{{count}} 分钟",
+    "h": "{{count}} 小时",
+    "h_other": "{{count}} 小时",
+    "d": "{{count}} 天",
+    "d_other": "{{count}} 天",
+    "w": "{{count}} 周",
+    "w_other": "{{count}} 周"
+  },
+  "search": {
+    "ariaLabel": "全局搜索",
+    "placeholder": "搜索…",
+    "title": "搜索",
+    "titleWithPage": "搜索结果，第 {{page}} 页，共 {{total}} 页",
+    "subtitle": "{{type}}搜索结果",
+    "subtitleWithContext": "“{{context}}”中的{{type}}搜索结果",
+    "withQueryType": "，使用{{queryType}}",
+    "types": "结果",
+    "noHits": "未找到结果。右侧其他分类中可能有匹配内容。",
+    "syntaxHelp": "使用完整的<0>搜索语法</0>获取更准确的结果",
+    "invalid": "搜索请求无效，请确认搜索范围有效。",
+    "quickSearch": {
+      "resultHeading": "需要帮助？",
+      "parseError": "无法解析查询。",
+      "parseErrorHelp": "搜索提示",
+      "hintsIcon": "搜索提示",
+      "hints": "搜索提示",
+      "screenReaderHintNoResult": "未找到仓库。其他类型中可能有结果，按回车键查看完整搜索结果。",
+      "screenReaderHint": "找到一个仓库。按回车键查看所有类型的搜索结果，或使用方向键选择仓库，再按回车键打开。",
+      "screenReaderHint_other": "找到至少 {{ count }} 个仓库。按回车键查看所有类型的搜索结果，或使用方向键选择仓库，再按回车键打开。",
+      "searchRepo": "搜索当前仓库",
+      "searchNamespace": "搜索当前命名空间",
+      "searchEverywhere": "搜索全部"
+    },
+    "queryTypes": {
+      "SIMPLE": "简单查询",
+      "EXPERT": "高级查询"
+    },
+    "syntax": {
+      "title": "高级搜索",
+      "subtitle": "了解对象字段、修饰符和运算符。",
+      "queryTypes": {
+        "title": "查询类型",
+        "description": "查询分为简单查询和高级查询。简单查询只包含搜索词，不包含下列运算符（例如 AND）；每个搜索词末尾会自动加上 *，因此搜索 Repo 也能匹配 Repository。包含至少一个运算符的查询属于高级查询，可实现更复杂的搜索。高级查询不会自动补充 *，需要时请手动添加。"
+      },
+      "exampleQueriesAndFields": {
+        "title": "按字段查询示例",
+        "description": "可以单独查询某个字段以缩小搜索范围，例如 name:ultimate 只在对象的 name 字段中查找 ultimate。有些字段（如 name、creationDate）适用于多种对象，另一些字段只适用于特定对象。"
+      },
+      "fields": {
+        "name": "名称",
+        "type": "类型",
+        "exampleValue": "示例值",
+        "hints": "提示"
+      },
+      "expandable": {
+        "showMore": "显示更多信息",
+        "hideMore": "隐藏更多信息"
+      },
+      "exampleQueries": {
+        "title": "查询示例",
+        "description": "组合使用字段、修饰符和运算符来查找仓库。",
+        "table": {
+          "description": "查找目标",
+          "query": "查询",
+          "explanation": "说明"
+        }
+      },
+      "utilities": {
+        "title": "工具",
+        "description": "将日期时间转换为 Unix 毫秒时间戳，用于查询。日期必填，时、分、秒可选。",
+        "datetime": {
+          "label": "将日期时间转换为 Unix 毫秒时间戳",
+          "format": "yyyy-mm-dd hh:mm:ss",
+          "convertButtonLabel": "转换"
+        },
+        "timestampPlaceholder": "Unix 时间戳",
+        "copyTimestampTooltip": "复制时间戳"
+      }
+    }
+  },
+  "pdfViewer": {
+    "error": "无法显示文档，请从<1>此处</1>下载。"
+  },
+  "tag": {
+    "delete": "删除"
+  },
+  "shortcutDocsModal": {
+    "title": "键盘快捷键",
+    "description": "下表列出了当前页面可用的全部键盘快捷键。",
+    "table": {
+      "headers": {
+        "keyCombination": "按键组合",
+        "description": "描述"
+      }
+    }
+  },
+  "shortcuts": {
+    "search": "聚焦全局快速搜索",
+    "repositories": "前往仓库",
+    "users": "前往用户",
+    "groups": "前往用户组",
+    "admin": "前往系统管理",
+    "docs": "打开快捷键说明",
+    "iterator": {
+      "next": "聚焦下一个列表项",
+      "previous": "聚焦上一个列表项"
+    }
+  },
+  "documentTitle": {
+    "suffix": "SCM-Manager",
+    "repositoryConfiguration": "配置",
+    "namespaceConfiguration": "配置",
+    "globalConfiguration": "配置"
+  }
+}

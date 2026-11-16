@@ -1,0 +1,23 @@
+{
+  "namespaceRoot": {
+    "menu": {
+      "navigationLabel": "命名空间",
+      "settingsNavLink": "设置",
+      "permissionsNavLink": "权限",
+      "informationNavLink": "信息"
+    },
+    "infoPage": {
+      "subtitle": "信息",
+      "repository": "仓库",
+      "type": "类型",
+      "contact": "联系人",
+      "lastModified": "最后修改时间"
+    }
+  },
+  "repositoryOverview": {
+    "namespace": "命名空间",
+    "settings": {
+      "tooltip": "命名空间设置"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "setPermissions": {
+    "subtitle": "设置权限",
+    "button": "设置权限",
+    "setPermissionsSuccessful": "权限设置成功"
+  }
+}

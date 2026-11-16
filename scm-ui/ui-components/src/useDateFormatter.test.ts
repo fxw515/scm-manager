@@ -15,8 +15,19 @@
  */
 
 import { chooseLocale, supportedLocales } from "./useDateFormatter";
+import { formatDistance } from "date-fns";
 
 describe("test choose locale", () => {
+  it("formats Chinese relative time when the browser prefers zh-CN", () => {
+    const locale = chooseLocale("zh-CN", ["zh", "en"]);
+    expect(
+      formatDistance(new Date("2026-01-01T00:00:00Z"), new Date("2026-01-01T00:05:00Z"), {
+        locale,
+        addSuffix: true,
+      })
+    ).toBe("5 分钟前");
+  });
+
   it("should choose de", () => {
     const locale = chooseLocale("de_DE", ["de", "en"]);
     expect(locale).toBe(supportedLocales.de);

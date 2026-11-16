@@ -1,0 +1,61 @@
+{
+  "scm-hg-plugin": {
+    "information": {
+      "clone": "克隆仓库",
+      "create": "创建新仓库",
+      "replace": "为已有仓库添加远程 origin",
+      "fetch": "获取远程更改",
+      "checkout": "切换分支",
+      "checkoutTag": "检出标签"
+    },
+    "config": {
+      "link": "Mercurial",
+      "title": "Mercurial 配置",
+      "disabled": {
+        "label": "禁用 Mercurial 插件。仅在没有 Mercurial 仓库时允许禁用。"
+      },
+      "hgBinary": {
+        "label": "Mercurial 可执行文件路径"
+      },
+      "encoding": {
+        "label": "仓库编码"
+      },
+      "showRevisionInId": {
+        "label": "在节点 ID 中显示修订号"
+      },
+      "enableHttpPostArgs": {
+        "label": "启用 HttpPostArgs 协议",
+        "descriptionText": "启用 Mercurial 的实验性 HttpPostArgs 协议。此协议通过 POST 请求体传递元信息，从而减小 HTTP 请求头。Mercurial 3.8 及以上版本支持此协议。"
+      },
+      "submit": "提交",
+      "success": "配置已保存",
+      "autoConfigure": "自动配置 Mercurial"
+    }
+  },
+  "permissions": {
+    "configuration": {
+      "read,write": {
+        "hg": {
+          "displayName": "修改 Mercurial 配置",
+          "description": "允许修改 Mercurial 配置"
+        }
+      }
+    },
+    "repository": {
+      "hg": {
+        "*": {
+          "displayName": "修改仓库的 Mercurial 配置",
+          "description": "允许修改仓库级 Mercurial 配置"
+        }
+      }
+    }
+  },
+  "verbs": {
+    "repository": {
+      "hg": {
+        "displayName": "配置 Mercurial",
+        "description": "允许修改此仓库的 Mercurial 配置"
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "group": {
+    "name": "名称",
+    "description": "描述",
+    "creationDate": "创建时间",
+    "lastModified": "最后修改时间",
+    "type": "类型",
+    "external": "外部",
+    "internal": "内部",
+    "members": "成员"
+  },
+  "groups": {
+    "title": "用户组",
+    "subtitle": "创建、查看、编辑和删除用户组",
+    "noGroups": "未找到用户组。",
+    "createButton": "创建用户组"
+  },
+  "singleGroup": {
+    "settingsTitle": "常规设置",
+    "errorTitle": "错误",
+    "errorSubtitle": "未知用户组错误",
+    "menu": {
+      "navigationLabel": "用户组",
+      "informationNavLink": "信息",
+      "settingsNavLink": "设置",
+      "generalNavLink": "常规",
+      "setPermissionsNavLink": "权限"
+    }
+  },
+  "overview": {
+    "filterGroup": "筛选用户组"
+  },
+  "addGroup": {
+    "title": "创建用户组",
+    "subtitle": "创建新用户组"
+  },
+  "groupForm": {
+    "subtitle": "编辑用户组",
+    "externalSubtitle": "编辑外部用户组",
+    "submit": "提交",
+    "nameError": "用户组名称无效",
+    "descriptionError": "描述无效",
+    "help": {
+      "nameHelpText": "用户组的唯一名称",
+      "descriptionHelpText": "用户组的简要描述",
+      "memberHelpText": "用户组成员的用户名",
+      "externalHelpText": "成员由 LDAP 等外部系统管理"
+    },
+    "addMemberAutocomplete": {
+      "buttonLabel": "添加成员",
+      "placeholder": "添加成员",
+      "loading": "正在加载…",
+      "noOptions": "没有可用建议"
+    }
+  },
+  "deleteGroup": {
+    "button": "删除用户组",
+    "confirmAlert": {
+      "title": "删除用户组",
+      "message": "确定删除此用户组吗？",
+      "submit": "是",
+      "cancel": "否"
+    }
+  }
+}

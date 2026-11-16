@@ -1,0 +1,31 @@
+{
+  "title": "完成初始化",
+  "adminStep": {
+    "title": "管理员账号",
+    "description": "从服务器日志中获取初始化令牌，然后创建管理员账号。",
+    "startupToken": "初始化令牌",
+    "username": "管理员用户名",
+    "displayname": "管理员显示名称",
+    "email": "电子邮箱",
+    "password": "新密码",
+    "password-confirmation": "确认密码",
+    "submit": "提交"
+  },
+  "pluginWizardStep": {
+    "title": "插件组合",
+    "description": "SCM-Manager 内置 Git、SVN 和 Mercurial 仓库管理功能。插件可扩展工作流程。选择一个或多个插件组合，即可启用相应功能。",
+    "submit": "提交",
+    "submitAndRestart": "提交并重启",
+    "skip": {
+      "title": "不安装额外插件，直接开始",
+      "subtitle": "仅安装核心插件。之后可以随时通过插件中心手动安装其他插件。"
+    },
+    "pluginSet": {
+      "expand": "查看包含的插件",
+      "collapse": "包含的插件"
+    }
+  },
+  "error": {
+    "forbidden": "令牌错误"
+  }
+}

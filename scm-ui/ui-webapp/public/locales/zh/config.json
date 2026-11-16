@@ -1,0 +1,126 @@
+{
+  "config": {
+    "navigationLabel": "系统管理",
+    "title": "全局配置",
+    "errorTitle": "错误",
+    "errorSubtitle": "未知配置错误",
+    "form": {
+      "submit": "提交",
+      "submit-success-notification": "配置已保存！",
+      "no-read-permission-notification": "你没有查看配置的权限。",
+      "no-write-permission-notification": "你没有修改配置的权限。"
+    }
+  },
+  "jwtSettings": {
+    "subtitle": "JWT 设置",
+    "label": "有效期",
+    "help": "设置 JWT 有效期，单位为小时。如需永不过期，请查看 config.yml 中的 endlessJwt 选项。",
+    "hoursWarning": "建议有效期不要超过 24 小时。",
+    "endlessWarning": "当前设置为永不过期。"
+  },
+  "proxySettings": {
+    "subtitle": "代理设置",
+    "enable": "启用代理",
+    "enableHelpText": "启用代理",
+    "password": "代理密码",
+    "passwordHelpText": "代理服务器的认证密码。",
+    "port": "端口",
+    "portHelpText": "代理端口",
+    "server": "代理服务器",
+    "serverHelpText": "代理服务器",
+    "user": "代理用户名",
+    "userHelpText": "代理服务器的认证用户名。",
+    "noExcludes": "暂无代理排除规则。",
+    "excludesTable": {
+      "label": "代理排除规则",
+      "helpText": "使用 Glob 通配符指定不经过代理的主机名。",
+      "deleteButton": "移除代理排除规则"
+    },
+    "addExclude": "添加代理排除规则",
+    "addExcludeButton": "添加代理排除规则",
+    "addExcludeError": "要添加的代理排除规则无效。"
+  },
+  "base-url-settings": {
+    "name": "基础 URL 设置",
+    "base-url": "基础 URL",
+    "force-base-url": "强制使用基础 URL"
+  },
+  "login-attempt": {
+    "name": "登录尝试",
+    "login-attempt-limit": "登录尝试次数上限",
+    "login-attempt-limit-timeout": "登录失败锁定时长"
+  },
+  "function-settings": {
+    "name": "功能"
+  },
+  "general-settings": {
+    "realm-description": "认证域描述",
+    "disable-grouping-grid": "禁用分组视图",
+    "date-format": "日期格式",
+    "anonymousMode": {
+      "title": "匿名访问",
+      "full": "对 Web 界面和版本控制协议启用",
+      "protocolOnly": "仅对版本控制协议启用",
+      "off": "已禁用"
+    },
+    "skip-failed-authenticators": "跳过失败的认证器",
+    "alerts-url": "警报 API 地址",
+    "release-feed-url": "版本发布订阅地址",
+    "mail-domain-name": "备用邮箱域名",
+    "enabled-xsrf-protection": "启用 XSRF 防护",
+    "enabled-user-converter": "启用用户类型自动转换",
+    "enabled-api-keys": "启用 API 密钥",
+    "enabled-file-search": "启用文件搜索",
+    "namespace-strategy": "命名空间策略",
+    "login-info-url": "登录提示地址",
+    "pluginUrl": "插件中心地址",
+    "emergencyContacts": {
+      "label": "紧急联系人",
+      "helpText": "发生管理事件时需要通知的用户。",
+      "autocompletePlaceholder": "添加需要通知的用户",
+      "ariaLabel": "添加紧急联系人"
+    }
+  },
+  "validation": {
+    "date-format-invalid": "日期格式无效",
+    "login-attempt-limit-timeout-invalid": "请输入数字",
+    "login-attempt-limit-invalid": "请输入数字",
+    "plugin-url-invalid": "URL 无效"
+  },
+  "invalidateCaches": {
+    "success": "缓存已失效",
+    "subtitle": "清除缓存",
+    "description": "手动使缓存失效以解决部分问题。注意：清除后 SCM-Manager 会暂时变慢。",
+    "button": "开始清除缓存"
+  },
+  "invalidateSearchIndex": {
+    "success": "已开始重建搜索索引",
+    "subtitle": "重建搜索索引",
+    "description": "重建搜索索引以解决部分搜索结果问题。注意：重建期间 SCM-Manager 会暂时变慢。",
+    "button": "开始重建搜索索引"
+  },
+  "help": {
+    "realmDescriptionHelpText": "输入认证域的描述。",
+    "dateFormatHelpText": "使用 Moment 日期格式，详见 MomentJS 文档。",
+    "pluginUrlHelpText": "插件中心 API 的 URL。占位符含义：version 为 SCM-Manager 版本，os 为操作系统，arch 为处理器架构。",
+    "alertsUrlHelpText": "提供最新系统警报的 API 地址。留空可禁用此功能。",
+    "releaseFeedUrlHelpText": "SCM-Manager 的 RSS 版本发布订阅地址，用于获取最新版本信息。留空可禁用此功能。",
+    "mailDomainNameHelpText": "必要时使用此域名为未填写邮箱的用户生成邮箱地址，不会向其发送邮件，也不会以其他方式访问该域名。",
+    "enableForwardingHelpText": "启用 mod_proxy 端口转发。",
+    "disableGroupingGridHelpText": "禁用仓库分组。修改后需要完整刷新页面。",
+    "allowAnonymousAccessHelpText": "匿名用户可访问已获得授权的仓库。",
+    "skipFailedAuthenticatorsHelpText": "当某个认证器找到了用户但认证失败时，继续尝试后续认证器。",
+    "adminGroupsHelpText": "拥有管理员权限的用户组名称。",
+    "adminUsersHelpText": "拥有管理员权限的用户名。",
+    "forceBaseUrlHelpText": "当请求来自其他 URL 时，重定向到基础 URL。",
+    "baseUrlHelpText": "应用的访问地址（包含上下文路径），例如 http://localhost:8080/scm。",
+    "loginAttemptLimitHelpText": "允许的最大登录尝试次数。设置为 -1 可禁用次数限制。",
+    "loginAttemptLimitTimeoutHelpText": "用户因登录失败次数过多而被临时锁定的时长，单位为秒。",
+    "enableXsrfProtectionHelpText": "启用 XSRF Cookie 防护。注意：此功能仍处于实验阶段。",
+    "enabledUserConverterHelpText": "启用用户类型转换。内部用户首次通过外部系统登录时，会自动转换为外部用户。",
+    "enabledApiKeysHelpText": "启用 API 密钥，所有用户都可将其作为额外的认证方式。",
+    "enabledFileSearchHelpText": "启用文件搜索，允许在代码浏览器中按文件路径搜索当前仓库。",
+    "nameSpaceStrategyHelpText": "命名空间的分配策略。",
+    "loginInfoUrlHelpText": "登录页面的提示内容地址（插件及功能介绍）。留空时不显示这些提示。"
+  }
+}

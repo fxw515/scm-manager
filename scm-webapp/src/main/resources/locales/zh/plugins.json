@@ -1,0 +1,544 @@
+{
+  "error": {
+    "subtitle": "错误",
+    "link": "更多信息链接"
+  },
+  "changeset": {
+    "contributor": {
+      "type": {
+        "author": "作者",
+        "Reviewed-by": "评审者",
+        "Co-authored-by": "共同作者",
+        "Committed-by": "提交者",
+        "Signed-off-by": "签署者"
+      }
+    }
+  },
+  "permissions": {
+    "*": {
+      "displayName": "全局管理员",
+      "description": "允许管理整个实例"
+    },
+    "repository": {
+      "read,pull": {
+        "*": {
+          "displayName": "读取全部仓库",
+          "description": "允许查看和克隆全部仓库"
+        }
+      },
+      "read,pull,push": {
+        "*": {
+          "displayName": "写入全部仓库",
+          "description": "允许查看、克隆和推送全部仓库"
+        }
+      },
+      "read,rename": {
+        "*": {
+          "displayName": "重命名全部仓库",
+          "description": "允许查看和重命名全部仓库"
+        }
+      },
+      "*": {
+        "displayName": "拥有全部仓库",
+        "description": "允许查看、克隆、推送、配置和删除全部仓库"
+      },
+      "create": {
+        "displayName": "创建仓库",
+        "description": "允许创建仓库"
+      },
+      "archive": {
+        "*": {
+          "displayName": "归档仓库",
+          "description": "允许将仓库标记为“已归档”，使其无法继续修改"
+        }
+      },
+      "read,export": {
+        "*": {
+          "displayName": "导出仓库",
+          "description": "注意：允许导出全部仓库及其全部元数据"
+        }
+      },
+      "read,healthCheck": {
+        "*": {
+          "displayName": "运行仓库健康检查",
+          "description": "允许查看全部仓库并运行健康检查"
+        }
+      }
+    },
+    "user": {
+      "*": {
+        "displayName": "管理用户",
+        "description": "允许管理全部用户"
+      }
+    },
+    "group": {
+      "*": {
+        "displayName": "管理用户组",
+        "description": "允许管理全部用户组"
+      }
+    },
+    "permission": {
+      "*": {
+        "displayName": "管理权限",
+        "description": "允许管理权限（还需要“管理用户”和/或“管理用户组”权限）"
+      }
+    },
+    "configuration": {
+      "list": {
+        "displayName": "基础管理",
+        "description": "其他管理权限的前提。没有此权限将无法查看任何配置。"
+      },
+      "read,write": {
+        "global": {
+          "displayName": "管理核心配置",
+          "description": "允许配置 SCM-Manager 的核心设置"
+        },
+        "*": {
+          "displayName": "管理核心和插件配置",
+          "description": "允许配置 SCM-Manager 核心及所有插件的设置"
+        }
+      }
+    },
+    "repositoryRole": {
+      "read,write": {
+        "displayName": "管理自定义仓库角色权限",
+        "description": "允许创建、修改和删除自定义仓库角色及其权限"
+      }
+    },
+    "plugin": {
+      "read": {
+        "displayName": "查看全部插件",
+        "description": "允许查看全部已安装及可用插件"
+      },
+      "read,write": {
+        "displayName": "查看和管理全部插件",
+        "description": "允许查看和管理全部已安装及可用插件"
+      }
+    },
+    "namespace": {
+      "permissionRead": {
+        "*": {
+          "displayName": "查看命名空间权限",
+          "description": "允许查看命名空间的权限设置"
+        }
+      },
+      "permissionRead,permissionWrite": {
+        "*": {
+          "displayName": "修改命名空间权限",
+          "description": "允许查看和修改命名空间的权限设置"
+        }
+      }
+    },
+    "metrics": {
+      "read": {
+        "displayName": "读取全部监控指标",
+        "description": "允许通过指标采集端点读取监控指标"
+      }
+    },
+    "unknown": "未知权限"
+  },
+  "verbs": {
+    "repository": {
+      "read": {
+        "displayName": "查看仓库",
+        "description": "允许在 SCM-Manager 中查看此仓库"
+      },
+      "modify": {
+        "displayName": "修改仓库元数据",
+        "description": "允许修改仓库的基本属性"
+      },
+      "delete": {
+        "displayName": "删除仓库",
+        "description": "允许删除仓库"
+      },
+      "rename": {
+        "displayName": "重命名仓库",
+        "description": "允许重命名仓库"
+      },
+      "pull": {
+        "displayName": "拉取 / 检出仓库",
+        "description": "允许拉取或检出仓库"
+      },
+      "push": {
+        "displayName": "推送 / 提交仓库",
+        "description": "允许通过推送或提交修改仓库内容"
+      },
+      "permissionRead": {
+        "displayName": "查看权限",
+        "description": "允许查看仓库权限"
+      },
+      "permissionWrite": {
+        "displayName": "修改权限",
+        "description": "允许修改仓库权限"
+      },
+      "archive": {
+        "displayName": "归档仓库",
+        "description": "允许将仓库标记为“已归档”，使其无法继续修改"
+      },
+      "export": {
+        "displayName": "导出仓库",
+        "description": "注意：允许导出仓库及其全部元数据"
+      },
+      "healthCheck": {
+        "displayName": "运行健康检查",
+        "description": "允许运行此仓库的健康检查"
+      },
+      "*": {
+        "displayName": "拥有仓库",
+        "description": "允许修改仓库的全部内容和设置（包含其他所有权限）"
+      }
+    },
+    "namespace": {
+      "*": {
+        "displayName": "拥有命名空间",
+        "description": "允许修改命名空间及其中全部仓库的内容和设置（包含其他所有权限）"
+      }
+    }
+  },
+  "errors": {
+    "context": "上下文",
+    "errorCode": "错误代码",
+    "transactionId": "事务 ID",
+    "moreInfo": "更多信息请参阅",
+    "violations": "校验问题：",
+    "dnWjIroRhT": {
+      "displayName": "推送失败",
+      "description": "推送仓库失败"
+    },
+    "AGR7UzkhA1": {
+      "displayName": "未找到",
+      "description": "未找到请求的对象，它可能已被其他会话删除。"
+    },
+    "9tSzgRvIu1": {
+      "displayName": "修订版本不唯一",
+      "description": "此修订版本存在歧义，请使用唯一标识符。"
+    },
+    "FtR7UznKU1": {
+      "displayName": "已存在",
+      "description": "已存在具有相同键值的对象。"
+    },
+    "FgSZpu9FR1": {
+      "displayName": "分支已存在",
+      "description": "已存在同名分支或分支目录。"
+    },
+    "9BR7qpDAe1": {
+      "displayName": "不允许修改密码",
+      "description": "你没有修改密码的权限。"
+    },
+    "2wR7UzpPG1": {
+      "displayName": "并发修改冲突",
+      "description": "对象已被其他用户或进程修改，请重新加载。"
+    },
+    "9SR8G0kmU1": {
+      "displayName": "不支持此功能",
+      "description": "此仓库使用的版本控制系统不支持请求的功能。"
+    },
+    "CmR8GCJb31": {
+      "displayName": "服务器内部错误",
+      "description": "服务器发生内部错误，请联系管理员获取帮助。"
+    },
+    "92RCCCMHO1": {
+      "displayName": "未找到内部 URL",
+      "description": "服务器无法处理内部请求，请联系管理员获取帮助。"
+    },
+    "2VRCrvpL71": {
+      "displayName": "数据格式无效",
+      "description": "服务器无法处理提交的数据，请检查输入或联系管理员。"
+    },
+    "8pRBYDURx1": {
+      "displayName": "数据类型无效",
+      "description": "提交的数据类型无效，请联系管理员获取帮助。"
+    },
+    "1wR7ZBe7H1": {
+      "displayName": "输入无效",
+      "description": "输入内容未通过校验，请修改后重试。"
+    },
+    "3zR9vPNIE1": {
+      "displayName": "输入无效",
+      "description": "输入内容未通过校验，请修改后重试。"
+    },
+    "CHRM7IQzo1": {
+      "displayName": "无法修改仓库",
+      "description": "仓库修改请求被拒绝，可能是插件检查未通过。请检查设置，并参考下方详细信息："
+    },
+    "ASSG1ehZ01": {
+      "displayName": "无法修改仓库",
+      "description": "仓库修改请求被拒绝，没有更多错误信息。"
+    },
+    "thbsUFokjk": {
+      "displayName": "不允许修改标识符",
+      "description": "对象的标识符被修改，此操作不被允许。"
+    },
+    "40RaYIeeR1": {
+      "displayName": "没有更改",
+      "description": "仓库文件没有变化，无法创建新提交。可能是 .ignore 文件规则阻止了更改。"
+    },
+    "ERS2vYb7U1": {
+      "displayName": "不允许修改命名空间",
+      "description": "只有命名空间策略为“自定义”时才能修改命名空间。"
+    },
+    "4iRct4avG1": {
+      "displayName": "修订版本的历史不相关",
+      "description": "这些修订版本没有共同历史，因此无法找到用于比较的共同提交。"
+    },
+    "65RdZ5atX1": {
+      "displayName": "删除插件文件失败",
+      "description": "无法删除用于取消插件安装或卸载的部分文件，可能导致状态不一致或 SCM-Manager 无法重启。请查看日志并手动清理插件目录。取消安装时删除对应的 smp 文件；取消卸载时删除插件目录中名为 uninstall 的文件。"
+    },
+    "6eRhF9gU41": {
+      "displayName": "不支持此合并策略",
+      "description": "仓库不支持所选合并策略。"
+    },
+    "Re6hF5g14U": {
+      "displayName": "快进合并失败",
+      "description": "无法对这些分支执行快进合并"
+    },
+    "78RhWxTIw1": {
+      "displayName": "无法删除默认分支",
+      "description": "无法删除仓库的默认分支，请先选择其他默认分支。"
+    },
+    "1yRiASshD1": {
+      "displayName": "无法删除匿名用户",
+      "description": "配置中仍启用了匿名访问，无法删除匿名用户。"
+    },
+    "8LRncum0S1": {
+      "displayName": "仓库内部错误",
+      "description": "处理底层仓库时发生错误或意外情况，请查看日志获取详细信息。"
+    },
+    "4GRrgkSC01": {
+      "displayName": "合并结果异常",
+      "description": "合并产生了无法自动处理的结果，请查看日志，并手动合并分支。"
+    },
+    "6mRuFxaWM1": {
+      "displayName": "校验和不匹配",
+      "description": "下载的插件校验和与预期不符，请重试或检查代理等网络设置。"
+    },
+    "9iRuFz1UB1": {
+      "displayName": "无法加载插件",
+      "description": "无法从服务器加载插件，请重试或检查代理等网络设置。详细信息见服务器日志。"
+    },
+    "8nRuFzjss1": {
+      "displayName": "清理失败插件时出错",
+      "description": "无法正确清理下载失败的插件，请检查服务器日志并手动移除插件。"
+    },
+    "5GS6lwvWF1": {
+      "displayName": "未找到依赖",
+      "description": "未找到插件所需的某个依赖，请查看服务器日志。"
+    },
+    "E5S6niWwi1": {
+      "displayName": "依赖版本不匹配",
+      "description": "此插件需要某个已安装插件的更高版本，请查看服务器日志。"
+    },
+    "4RS6niPRX1": {
+      "displayName": "插件信息不匹配",
+      "description": "下载的插件与插件中心提供的信息不符，请查看服务器日志。"
+    },
+    "2qRyyaVcJ1": {
+      "displayName": "对象格式无效",
+      "description": "输入内容包含无效格式，请查看服务器日志。"
+    },
+    "3tS0mjSoo1": {
+      "displayName": "创建工作目录失败",
+      "description": "服务器无法为请求创建工作目录，请查看服务器日志。"
+    },
+    "3US6mweXy1": {
+      "displayName": "无法删除只读密钥",
+      "description": "服务器生成的公钥为只读，不能删除。"
+    },
+    "BxS5wX2v71": {
+      "displayName": "密钥无效",
+      "description": "提供的内容不是有效公钥。"
+    },
+    "FVS9JY1T21": {
+      "displayName": "请求错误",
+      "description": "处理请求时发生错误，请检查 HTTP 状态码及具体错误信息。"
+    },
+    "D6SHRfqQw1": {
+      "displayName": "仓库导入失败",
+      "description": "无法导入仓库，可能是用户名或密码错误或缺失。请检查输入。"
+    },
+    "3FSIYtBJw1": {
+      "displayName": "无法保存对象",
+      "description": "对应存储已设为只读，无法保存对象。详细信息见日志。"
+    },
+    "3hSIlptme1": {
+      "displayName": "仓库已归档",
+      "description": "仓库已标记为“已归档”，不能修改。"
+    },
+    "67SM3DANZ1": {
+      "displayName": "仓库导出失败",
+      "description": "无法导出仓库，请联系管理员或查看日志。"
+    },
+    "4hSNNTBiu1": {
+      "displayName": "仓库类型不匹配",
+      "description": "指定类型与仓库类型不一致。"
+    },
+    "1mSNlpe1V1": {
+      "displayName": "仓库正在导出",
+      "description": "仓库正在导出，暂时无法修改。"
+    },
+    "5GSO9ZkzX1": {
+      "displayName": "环境不兼容",
+      "description": "SCM-Manager 或某个插件版本过低，无法导入此文件。请更新到兼容版本，详细信息见日志。"
+    },
+    "8YR7aawFW1": {
+      "displayName": "当前密码错误",
+      "description": "当前密码不正确，请重试。"
+    },
+    "CISPvega31": {
+      "displayName": "此仓库类型无法导入",
+      "description": "指定的仓库类型不支持此导入操作。"
+    },
+    "3mSmwOtOd1": {
+      "displayName": "文件已锁定",
+      "description": "已存在其他锁，无法修改文件或其锁。使用“强制”操作可忽略其他锁。"
+    },
+    "8wSpi62oJ1": {
+      "displayName": "修改失败",
+      "description": "无法应用更改，可能是文件无法移动、文件名无效等原因。"
+    },
+    "8OT4gBVvp1": {
+      "displayName": "仓库类型无效",
+      "description": "不支持此仓库类型。"
+    },
+    "3ITWbABz91": {
+      "displayName": "API 密钥已禁用",
+      "description": "全局配置中已禁用 API 密钥，需要重新启用后才能使用。"
+    },
+    "E4TrutUSv1": {
+      "displayName": "保存仓库失败",
+      "description": "保存仓库时发生错误，详细信息见服务器日志。"
+    },
+    "5HU4ouwQr1": {
+      "displayName": "不满足插件要求：版本",
+      "description": "当前 SCM-Manager 版本不满足要求，详细信息见服务器日志。"
+    },
+    "5gU4pegil1": {
+      "displayName": "不满足插件要求：操作系统",
+      "description": "不支持当前操作系统，详细信息见服务器日志。"
+    },
+    "DHU4pfOtA1": {
+      "displayName": "不满足插件要求：处理器架构",
+      "description": "当前处理器架构不满足要求，详细信息见服务器日志。"
+    },
+    "BaSXkAztI1": {
+      "displayName": "仓库为只读",
+      "description": "此仓库为只读，不能修改。"
+    },
+    "99UQi5FKd1": {
+      "displayName": "标签受保护",
+      "description": "部分标签受全局配置保护，无法删除。"
+    },
+    "7XUd94Iwo1": {
+      "displayName": "合并冲突",
+      "description": "存在无法自动解决的合并冲突。"
+    }
+  },
+  "healthChecksFailures": {
+    "detailUrl": "点击此处查看详情。"
+  },
+  "namespaceStrategies": {
+    "UsernameNamespaceStrategy": "用户名",
+    "CustomNamespaceStrategy": "自定义",
+    "CurrentYearNamespaceStrategy": "当前年份",
+    "RepositoryTypeNamespaceStrategy": "仓库类型"
+  },
+  "notifications": {
+    "exportFinished": "仓库导出完成。",
+    "exportFailed": "仓库导出失败，请重试或联系管理员。",
+    "importFinished": "仓库导入完成。",
+    "importWithLfsFinished": "仓库导入完成，包含 {{successCount}} 个 LFS 文件。",
+    "importLfsFailed": "仓库导入完成。导入 {{overallCount}} 个 LFS 文件时出现 {{failureCount}} 个错误。",
+    "importFailed": "仓库导入失败，请重试或联系管理员。",
+    "healthCheckFailed": "仓库健康检查未通过。",
+    "healthCheckSuccess": "仓库健康检查通过。"
+  },
+  "search": {
+    "types": {
+      "repository": {
+        "subtitle": "仓库",
+        "navItem": "仓库",
+        "title": "仓库",
+        "fields": {
+          "name": {
+            "exampleValue": "scm-manager"
+          },
+          "namespace": {
+            "exampleValue": "cloudogu"
+          },
+          "type": {
+            "exampleValue": "git、hg 或 svn"
+          },
+          "description": {
+            "exampleValue": "此仓库包含 SCM-Manager 的源代码。"
+          },
+          "creationDate": {
+            "exampleValue": "1628077286",
+            "hints": "自 1970-01-01 起的创建时间戳，单位为毫秒，支持范围搜索。"
+          },
+          "lastModified": {
+            "exampleValue": "1623057235",
+            "hints": "自 1970-01-01 起的最后修改时间戳，单位为毫秒，支持范围搜索。"
+          }
+        },
+        "examples": [
+          {
+            "description": "查找名为 ultimate-Repository 或 ultimate_repository 的仓库，但不确定中间的连接字符。",
+            "query": "name:ultimate?Repository",
+            "explanation": "在 name 字段中查找 ultimate 与 repository 之间恰好有一个字符的内容。"
+          },
+          {
+            "description": "查找 ultimate 命名空间中在 2021-01-01 至 2021-02-01 之间修改过的全部仓库。",
+            "query": "nameSpace:ultimate AND lastModified:[1609459200000 TO 1612137600000]",
+            "explanation": "查找 ultimate 命名空间中在指定时段最后修改的仓库，时间以 Unix 毫秒时间戳表示。可使用本页底部工具转换日期时间。"
+          }
+        ]
+      },
+      "user": {
+        "subtitle": "用户",
+        "navItem": "用户",
+        "title": "用户",
+        "fields": {
+          "name": {
+            "exampleValue": "admin"
+          },
+          "displayName": {
+            "exampleValue": "管理员"
+          },
+          "creationDate": {
+            "exampleValue": "1628077286",
+            "hints": "自 1970-01-01 起的创建时间戳，单位为毫秒，支持范围搜索。"
+          },
+          "lastModified": {
+            "exampleValue": "1623057235",
+            "hints": "自 1970-01-01 起的最后修改时间戳，单位为毫秒，支持范围搜索。"
+          },
+          "mail": {
+            "exampleValue": "admin@hitchhiker.com"
+          }
+        }
+      },
+      "group": {
+        "subtitle": "用户组",
+        "navItem": "用户组",
+        "title": "用户组",
+        "fields": {
+          "name": {
+            "exampleValue": "开发人员"
+          },
+          "description": {
+            "exampleValue": "此用户组包含全部软件开发人员。"
+          },
+          "creationDate": {
+            "exampleValue": "1628077286",
+            "hints": "自 1970-01-01 起的创建时间戳，单位为毫秒，支持范围搜索。"
+          },
+          "lastModified": {
+            "exampleValue": "1623057235",
+            "hints": "自 1970-01-01 起的最后修改时间戳，单位为毫秒，支持范围搜索。"
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,8 @@
   </a>
 </p>
 
+**简体中文与 Ubuntu 26.04 部署：** 本分支基于稳定版 3.12.2，包含核心界面与 Git/SVN 插件翻译、独立 Docker 安装脚本、备份恢复及验收说明。参阅 [中文部署文档](deploy/ubuntu/README.md)。Gitea 可继续保留。
+
 The easiest way to share and manage your Git, Mercurial and Subversion
 repositories.
 
@@ -19,7 +21,7 @@ repositories.
 - Useful plugins available
 - Licensed under AGPL-3.0-only
 
-This branch (`develop`) is for the development of SCM-Manager. If you are interested in the development of version
+The upstream branch (`develop`) is for the development of SCM-Manager. If you are interested in the development of version
 1.x, please checkout the branch `support/1.x`.
 
 ## News

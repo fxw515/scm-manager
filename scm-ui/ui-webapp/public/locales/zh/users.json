@@ -1,0 +1,189 @@
+{
+  "user": {
+    "name": "用户名",
+    "displayName": "显示名称",
+    "mail": "电子邮箱",
+    "password": "密码",
+    "active": "已启用",
+    "inactive": "已停用",
+    "externalFlag": "外部",
+    "type": "类型",
+    "creationDate": "创建时间",
+    "lastModified": "最后修改时间"
+  },
+  "validation": {
+    "mail-invalid": "邮箱地址无效",
+    "name-invalid": "名称无效",
+    "displayname-invalid": "显示名称无效"
+  },
+  "users": {
+    "title": "用户",
+    "subtitle": "创建、查看、编辑和删除用户",
+    "noUsers": "未找到用户。",
+    "createButton": "创建用户"
+  },
+  "singleUser": {
+    "settingsTitle": "常规设置",
+    "errorTitle": "错误",
+    "errorSubtitle": "未知用户错误",
+    "menu": {
+      "navigationLabel": "用户",
+      "informationNavLink": "信息",
+      "settingsNavLink": "设置",
+      "generalNavLink": "常规",
+      "setPasswordNavLink": "密码",
+      "setPermissionsNavLink": "权限",
+      "setPublicKeyNavLink": "公钥",
+      "setApiKeyNavLink": "API 密钥"
+    }
+  },
+  "overview": {
+    "filterUser": "筛选用户"
+  },
+  "createUser": {
+    "title": "创建用户",
+    "subtitle": "创建新用户",
+    "notification": "已启用外部用户管理系统。在此创建的用户不会同步到外部系统。",
+    "form": {
+      "submit": "提交",
+      "submit-success-notification": "用户更新成功",
+      "name": {
+        "label": "用户名",
+        "error": {
+          "validate": "名称无效"
+        }
+      },
+      "displayName": {
+        "label": "显示名称",
+        "error": {
+          "validate": "显示名称无效"
+        }
+      },
+      "mail": {
+        "label": "电子邮箱",
+        "error": {
+          "validate": "邮箱地址无效"
+        }
+      },
+      "external": {
+        "label": "外部",
+        "helpText": "此用户由外部系统管理。"
+      },
+      "password": {
+        "label": "新密码",
+        "error": {
+          "validate": "密码长度必须在 6 到 1024 个字符之间"
+        },
+        "confirmation": {
+          "label": "确认新密码",
+          "error": {
+            "validate": "两次输入的密码必须一致"
+          }
+        }
+      },
+      "active": {
+        "label": "已启用",
+        "helpText": "启用或停用此用户。"
+      }
+    }
+  },
+  "deleteUser": {
+    "button": "删除用户",
+    "confirmAlert": {
+      "title": "删除用户",
+      "message": "确定删除此用户吗？",
+      "submit": "是",
+      "cancel": "否"
+    }
+  },
+  "singleUserPassword": {
+    "subtitle": "设置密码",
+    "button": "设置密码",
+    "setPasswordSuccessful": "密码设置成功"
+  },
+  "userForm": {
+    "subtitle": "编辑用户",
+    "userIsInternal": "此用户由 SCM-Manager 内部管理",
+    "userIsExternal": "此用户由外部系统管理",
+    "button": {
+      "submit": "提交",
+      "convertToExternal": "转换为外部用户",
+      "convertToInternal": "转换为内部用户"
+    },
+    "modal": {
+      "passwordRequired": "为内部用户设置新密码",
+      "convertToInternal": "转换为内部用户"
+    }
+  },
+  "publicKey": {
+    "subtitle": "公钥",
+    "description": "可在此保存用于验证签名（例如提交签名）的 GPG 公钥，也可查看由 SCM-Manager 生成的公钥。",
+    "noStoredKeys": "未找到密钥。",
+    "displayName": "显示名称",
+    "created": "创建时间",
+    "raw": "密钥",
+    "download": "下载",
+    "delete": "删除",
+    "addSubtitle": "添加新密钥",
+    "addKey": "添加密钥",
+    "deleteConfirmAlert": {
+      "title": "公钥",
+      "message": "确定删除此公钥吗？",
+      "submit": "是",
+      "cancel": "否"
+    }
+  },
+  "apiKey": {
+    "subtitle": "API 密钥",
+    "text1": "创建和管理个人访问令牌，用于访问 REST API，或作为版本控制客户端的密码。令牌权限限于仓库及所选角色的权限范围。",
+    "manageRoles": "可以在系统管理的“权限角色”页面查看和创建角色。",
+    "text2": "在 REST 请求中使用令牌时，请通过名为 X-Bearer-Token 的 Cookie 传递。也可将令牌作为版本控制客户端的密码。",
+    "noStoredKeys": "未找到密钥。",
+    "displayName": "显示名称",
+    "permissionRole": {
+      "label": "授权角色",
+      "help": "API 密钥的权限将限制在此角色的权限范围内"
+    },
+    "created": "创建时间",
+    "addSubtitle": "添加新密钥",
+    "addKey": "添加密钥",
+    "delete": "删除",
+    "download": "下载",
+    "modal": {
+      "title": "密钥已创建",
+      "text1": "新 API 密钥已生成。可将其作为 REST 请求的 Bearer 令牌，或版本控制客户端的密码。",
+      "text2": "请立即妥善保存 API 密钥！密钥仅显示这一次，之后无法找回。",
+      "alt": "API 密钥",
+      "clipboard": "复制到剪贴板",
+      "close": "关闭"
+    },
+    "deleteConfirmAlert": {
+      "title": "API 密钥",
+      "message": "确定删除此 API 密钥吗？",
+      "submit": "是",
+      "cancel": "否"
+    }
+  },
+  "permissionOverview": {
+    "title": "权限概览",
+    "help": "如果用户曾经登录，此概览依据其上次登录时所属的用户组，包含外部系统（如 LDAP）提供但尚未在 SCM-Manager 中创建的用户组。外部用户组此后可能已发生变化，因此此处不一定反映当前状态。对于从未登录的用户，仅列出其内部用户组。",
+    "groups": {
+      "noRepositoriesFound": "暂无命名空间或仓库。",
+      "showGroupsWithoutPermission": "显示尚未在 SCM-Manager 中创建的外部用户组",
+      "showGroupsWithoutPermissionHelp": "显示外部系统提供、SCM-Manager 尚未识别的用户组。要为这些用户组分配权限，需先在 SCM-Manager 中将其创建为外部用户组。",
+      "noGroupsFound": "暂无用户组。",
+      "noUnknownGroupsFound": "没有其他用户组。",
+      "groupName": "名称",
+      "permissionsConfigured": "已设置权限",
+      "createGroup": "创建",
+      "editPermissions": "编辑"
+    },
+    "repositories": {
+      "subtitle": "命名空间 / 仓库",
+      "namespaceName": "命名空间 / 名称",
+      "permissionsConfigured": "已设置权限",
+      "editPermissions": "编辑"
+    },
+    "edit": "编辑"
+  }
+}
