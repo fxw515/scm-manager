@@ -15,7 +15,7 @@
 
 ## 尚需服务器验收
 
-本机没有 Docker/Linux 运行环境，**尚未执行 Docker 镜像构建或 Ubuntu 26.04 实机部署**。镜像构建使用 Node.js 22；本机前端构建不能替代此容器构建验收。
+Windows 本机没有 Docker/Linux 运行环境；后续已在 GitHub Actions 执行 Docker 镜像构建与启动检查，结果见下方。**Ubuntu 26.04 部署服务器实机验收尚未完成**。镜像构建使用 Node.js 22。
 
 请按 [部署文档](README.md) 完成：
 
@@ -32,3 +32,12 @@
 用户提供的服务器日志显示 Docker 已安装，镜像构建在连接 Docker Hub 获取 Node 镜像元数据时超时；同一次 apt 操作中的 needrestart 曾尝试重启 aegis.service 并失败。这不能视为镜像构建或应用启动验收通过。
 
 已补充 GitHub Actions 构建与离线导入流程，并将脚本内 apt 调用的 needrestart 钩子临时挂起；已有系统配置不变。新增镜像平台校验，避免把其他 CPU 架构的离线包部署到本机。工作流运行结果以 GitHub 上对应提交的记录为准；新增路径不因本地静态检查通过而视为服务器实测通过。
+
+## GitHub Actions 实际构建结果
+
+- 源码提交：`141c4399bd822952dca4f3c865df08454c8a5cb8`。
+- [运行记录 43831533277](https://github.com/fxw515/scm-manager/actions/runs/43831533277)：2026-11-16 成功。
+- Ubuntu 24.04 amd64 runner 上，10 项 Python 测试、Bash 语法检查、完整 Docker 构建均通过。
+- 构建后的实际镜像启动成功，容器达到 `healthy`，首页和 10 组中文资源接口检查通过。
+- 已导出 linux/amd64 镜像、对应源码及 SHA-256 校验文件，上传为构建产物，保留至 2026-11-23。
+- 仍未验证用户服务器上的离线导入、账号初始化、Git/SVN 业务操作、备份恢复以及 Gitea 共存状态；arm64 也未运行。
